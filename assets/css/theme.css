@@ -1,0 +1,163 @@
+/*----------------------------------------------
+
+[Theme CSS]
+
+Theme   : Shock
+Version : 1.0.0
+Author  : Codings
+Support : codings.dev
+
+----------------------------------------------*/
+
+/*----------------------------------------------
+
+[Content Index]
+
+1. Color
+2. Typography
+
+----------------------------------------------*/
+
+/*----------------------------------------------
+1. Color
+----------------------------------------------*/
+
+/* #region Color */
+
+:root {
+
+	/* Primary */
+	--primary-color: #07beb8;
+	--primary-15-color: #07beb826;
+	--primary-25-color: #07beb840;
+	--primary-50-color: #07beb880;
+	--primary-75-color: #07beb8bf;
+
+	/* Secondary */
+	--secondary-color: #6917d0;
+	--secondary-15-color: #6917d026;
+	--secondary-25-color: #6917d040;
+	--secondary-50-color: #6917d080;
+	--secondary-75-color: #6917d0bf;
+
+	/* Tertiary */
+	--tertiary-color: #ff1791;
+	--tertiary-15-color: #ff179126;
+	--tertiary-25-color: #ff179140;
+	--tertiary-50-color: #ff179180;
+	--tertiary-75-color: #ff1791bf;
+
+	/* Auxiliary */
+	--accent-color: #fedc00;
+	--success-color: #007a4d;
+	--info-color: #023e8a;
+	--warning-color: #ff9800;
+	--danger-color: #e63946;
+
+	/* White */
+	--white-color: #fff;
+	--white-10-color: rgba(255, 255, 255, 0.1);
+	--white-25-color: rgba(255, 255, 255, 0.25);
+	--white-50-color: rgba(255, 255, 255, 0.50);
+	--white-65-color: rgba(255, 255, 255, 0.65);
+	--white-75-color: rgba(255, 255, 255, 0.75);
+	--white-85-color: rgba(255, 255, 255, 0.85);
+
+	/* Gray */	
+	--gray-color: #8f93a5;
+	--gray-10-color: rgba(143, 147, 165, 0.1);
+	--gray-25-color: rgba(143, 147, 165, 0.25);
+	--gray-50-color: rgba(143, 147, 165, 0.50);
+	--gray-65-color: rgba(143, 147, 165, 0.65);
+	--gray-75-color: rgba(143, 147, 165, 0.75);
+	--gray-85-color: rgba(143, 147, 165, 0.85);
+
+	/* Black */
+	--black-color: #1a1a20;
+	--black-10-color: rgba(26, 26, 32, 0.1);
+	--black-25-color: rgba(26, 26, 32, 0.25);
+	--black-50-color: rgba(26, 26, 32, 0.50);
+	--black-65-color: rgba(26, 26, 32, 0.65);
+	--black-75-color: rgba(26, 26, 32, 0.75);
+	--black-85-color: rgba(26, 26, 32, 0.85);
+}
+
+/* #endregion Color */
+
+/*----------------------------------------------
+2. Typography
+----------------------------------------------*/
+
+/* #region Typography */
+
+:root {
+	--primary-font: lato, sans-serif;
+	--secondary-font: proxima-nova, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+	font-family: var(--secondary-font);  
+  line-height: 1.2;
+}
+
+.text-style-1, 
+.text-style-2, 
+.text-style-3, 
+.text-style-4, 
+.text-style-5, 
+.text-style-6, 
+.text-style-7, 
+.text-style-8 {
+	font-family: var(--secondary-font);  
+	line-height: 1.2;
+}
+
+.text-style-1 { font-size: 6.2rem; font-weight: 800; }
+.text-style-2 { font-size: 5.2rem; font-weight: 800; }
+.text-style-3 { font-size: 4.2rem; font-weight: 800; }
+.text-style-4 { font-size: 4.2rem; font-weight: 100; }
+.text-style-5 { font-size: 3.2rem; font-weight: 800; }
+.text-style-6 { font-size: 3.2rem; font-weight: 100; }
+.text-style-7 { font-size: 2.2rem; font-weight: 700; }
+.text-style-8 { font-size: 2.2rem; font-weight: 100; }
+.text-style-9 { font-size: 1.75rem; font-weight: 800; }
+.text-style-10 { font-size: 1.75rem; font-weight: 100; }
+.text-style-11 { font-size: 1.2rem; font-weight: 700; }
+.text-style-12 { font-size: 1.2rem; font-weight: 400; }
+
+@media (max-width: 767px) {
+	.text-style-1 { font-size: 3rem; }
+	.text-style-2 { font-size: 3rem; }
+	.text-style-3 { font-size: 3rem; }
+	.text-style-4 { font-size: 3rem; }
+	.text-style-5 { font-size: 2.2rem; font-weight: 700; }
+	.text-style-6 { font-size: 2.2rem; }
+	.text-style-7 { font-size: 1.75rem; }
+	.text-style-8 { font-size: 1.75rem; }	
+	.text-style-9 { font-size: 1.5rem; }
+	.text-style-10 { font-size: 1.5rem; }
+	.text-style-11 { font-size: 1.2rem; }
+	.text-style-12 { font-size: 1rem; }
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+
+b,
+strong {
+  font-weight: 700;
+}
+
+small, .small {
+  font-size: 0.85rem;
+}
+
+/* #endregion Typography */
