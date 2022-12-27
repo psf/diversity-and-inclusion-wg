@@ -3842,6 +3842,7 @@ table {
 
 .modal .modal-header .close-button {
 	position: absolute;
+	z-index: 2;
 	top: 1.75rem;
 	right: 1.75rem;
 	margin: 0;
