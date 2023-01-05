@@ -4951,17 +4951,16 @@ table {
 	flex-direction: column;
 	}
 .hr-line{
-	  width: 60%;
+	  width: 90%;
 	  margin: auto;
 	  
 	}
 	/* Style the buttons that are used to open and close the faq-page body */
-.faq-page {
-		/* background-color: #eee; */
+.faq-page { 
 		color: #444;
 		cursor: pointer;
 		padding: 30px 20px;
-		width: 60%;
+		width: 90%;
 		border: none;
 		outline: none;
 		transition: 0.4s;
@@ -4970,7 +4969,7 @@ table {
 .faq-body{
 		margin: auto;
 		/* text-align: center; */
-	   width: 50%; 
+	   width: 80%; 
 	   padding: auto;
 	   
 	}
@@ -4992,7 +4991,7 @@ table {
 		font-size: 13px;
 		color: rgb(230, 230, 230);
 		float: right;
-		margin-left: 5px;
+		margin-left: 8px;
 	}
 .active:after {
 		content: "\2796";
