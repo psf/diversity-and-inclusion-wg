@@ -473,6 +473,8 @@
     </nav>
   </header>
 
+  
+
   <!-- Main -->
   <main id="main" class="shock-main bg-color black">
 
@@ -1266,7 +1268,6 @@
       </div>
     </section>
 
- 
     <!-- Faqs --><br><br>
     <section id="faqs" class="shock-section">
       <div class="container max-w-75 p-0">
@@ -1407,16 +1408,23 @@
         <div class="modal-body">
           <!-- Form -->
           <div class="form-area scheme-2 secondary">
-            <form class="form-fields needs-validation was-validated" novalidate="novalidate">
+            <form 
+              action="https://api.sheetmonkey.io/form/gCtVFicg4GUkMaAFtyL1op"
+              method="post"
+              class="form-fields was-validated" 
+              novalidate="novalidate"
+              >
+              <input type="hidden" name="Created" value="x-sheetmonkey-current-date-time" />
+
               <div class="form-row row">
                 <div class="form-col form-floating col-12 col-md-6">
-                  <input id="InputFloatingName" class="form-control" type="text" placeholder="Name" required="required">
+                  <input id="InputFloatingName" class="form-control" type="text" name="Name" required="required">
                   <label for="InputFloatingName" class="form-label">Name</label>
                   <div class="invalid-feedback">How do you want us to call you?</div>
                   <div class="valid-feedback">Looks good.</div>
                 </div>
                 <div class="form-col form-floating col-12 col-md-6">
-                  <input id="InputFloatingEmail" class="form-control" type="email" placeholder="name@example.com"
+                  <input id="InputFloatingEmail" class="form-control" type="email" name="email"
                     required="required">
                   <label for="InputFloatingEmail" class="form-label">Email</label>
                   <div class="invalid-feedback">Please enter a valid email address.</div>
@@ -1426,7 +1434,7 @@
               <div class="form-row row">
                 <div class="form-col form-floating col-12">
                   <textarea id="InputFloatingMessage" class="form-control form-textarea" rows="3"
-                    placeholder="Enter your message." required="required"></textarea>
+                    name="message" required="required"></textarea>
                   <label for="InputFloatingMessage" class="form-label">Message</label>
                   <div class="valid-feedback">How can we help you? :)</div>
                 </div>
@@ -1440,6 +1448,7 @@
                     style="transform: translate(0px, 0px);">
                     <span class="button-text white white-hover">Send Message</span>
                     <i class="fa-solid fa-arrow-right button-icon white white-hover"></i>
+                    <input type="submit" value="Submit" />
                   </button>
                 </div>
               </div>
