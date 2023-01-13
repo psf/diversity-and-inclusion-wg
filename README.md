@@ -3,7 +3,7 @@ Diversity and Inclusion Working Group
 
 This website is managed by PSF's Diversity and Inclusion Workgroup. If you would like to join as an official member, read more [here](https://wiki.python.org/psf/DiversityandInclusionWG). 
 
-It is currently hosted on [github page](https://psf.github.io/diversity-and-inclusion-wg/)
+It is currently hosted on [Github page](https://psf.github.io/diversity-and-inclusion-wg/)
 
 This website welcomes pull requests from anyone in the community.
 
