@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}Mapping the Global Python Community | {{ SITENAME }}{% endblock %}
+
+{% block content %}
+
+<!-- Hero -->
+<section class="pt-32 pb-16 bg-gradient-to-br from-white via-blue-50/40 to-white" aria-labelledby="hero-heading">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+        <h1 id="hero-heading" class="text-4xl lg:text-5xl font-black leading-tight tracking-tight text-gray-900 mb-6">
+            Mapping the Global Python Community
+        </h1>
+        <p class="text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
+            Before we can serve the worldwide Python community, we need to understand it. This initiative creates a comprehensive picture of Python communities across the globe.
+        </p>
+    </div>
+</section>
+
+<!-- Content -->
+<section class="py-12 bg-white" aria-label="Page content">
+    <div class="max-w-4xl mx-auto px-6">
+
+        <div class="mb-16">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">The Challenge</h2>
+            <p class="text-gray-600 leading-relaxed mb-4">Python is used in nearly every country on Earth. But our understanding of the global community has been incomplete.</p>
+            <p class="text-gray-600 leading-relaxed mb-4">Which regions have thriving Python communities? Which are just getting started? What languages do organizers need resources in? What barriers prevent participation?</p>
+            <p class="text-gray-600 leading-relaxed">Without this information, the PSF can't effectively support communities beyond the regions it already knows well.</p>
+        </div>
+
+        <div class="mb-16">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">What We're Doing</h2>
+            <p class="text-gray-600 leading-relaxed mb-6">We're building an outreach map that documents:</p>
+            <ul class="space-y-3 mb-6">
+                <li class="flex items-start gap-3 text-gray-600">
+                    <i class="fa-solid fa-check text-pyblue mt-1 text-sm" aria-hidden="true"></i>
+                    <span><strong>Active Python communities</strong> — user groups, meetups, conferences, and informal gatherings</span>
+                </li>
+                <li class="flex items-start gap-3 text-gray-600">
+                    <i class="fa-solid fa-check text-pyblue mt-1 text-sm" aria-hidden="true"></i>
+                    <span><strong>Regional organizations</strong> — PyLadies chapters, Django Girls workshops, regional PyCons</span>
+                </li>
+                <li class="flex items-start gap-3 text-gray-600">
+                    <i class="fa-solid fa-check text-pyblue mt-1 text-sm" aria-hidden="true"></i>
+                    <span><strong>Community leaders</strong> — organizers, educators, and advocates doing the work on the ground</span>
+                </li>
+                <li class="flex items-start gap-3 text-gray-600">
+                    <i class="fa-solid fa-check text-pyblue mt-1 text-sm" aria-hidden="true"></i>
+                    <span><strong>Gaps and opportunities</strong> — regions with Python users but no organized community presence</span>
+                </li>
+            </ul>
+            <p class="text-gray-600 leading-relaxed">This isn't just a directory. It's a tool for understanding where support is needed most—and for connecting communities with each other.</p>
+        </div>
+
+        <div class="mb-16">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">How This Helps</h2>
+            <div class="grid md:grid-cols-3 gap-6 mt-6">
+                <div class="bg-gray-50 border border-gray-200 rounded-xl p-6">
+                    <h3 class="text-lg font-bold text-pyblue mb-2">For the PSF</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Better data means better decisions about where to direct resources, which regions to prioritize for grants, and how to communicate with communities in different contexts.</p>
+                </div>
+                <div class="bg-gray-50 border border-gray-200 rounded-xl p-6">
+                    <h3 class="text-lg font-bold text-pyblue mb-2">For Community Organizers</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Find other organizers in your region. Learn from communities facing similar challenges. Access resources tailored to your context.</p>
+                </div>
+                <div class="bg-gray-50 border border-gray-200 rounded-xl p-6">
+                    <h3 class="text-lg font-bold text-pyblue mb-2">For Pythonistas Everywhere</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Discover communities near you. Connect with people who share your interests and background. Feel less alone in your Python journey.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-16">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Current Status</h2>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 text-amber-700 text-sm font-medium border border-amber-200 mb-4">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+                In Progress
+            </div>
+            <p class="text-gray-600 leading-relaxed">We're actively gathering information and building out the map. This is ongoing work that grows as we connect with more communities.</p>
+        </div>
+
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">How You Can Help</h2>
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-8 mb-6">
+                <h3 class="text-lg font-bold text-gray-900 mb-2">Know a Python community we should include?</h3>
+                <p class="text-gray-600 leading-relaxed mb-4">We want to hear about user groups, meetups, conferences, educational programs, and informal gatherings—especially in regions that are underrepresented in global Python spaces.</p>
+                <a href="#" class="inline-flex items-center px-6 py-2.5 text-sm font-bold text-white bg-pyblue rounded-lg hover:bg-pyblue-dark transition-colors shadow-md">
+                    Submit a Community
+                    <i class="fa-solid fa-arrow-right ml-2 text-xs" aria-hidden="true"></i>
+                </a>
+            </div>
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-8">
+                <h3 class="text-lg font-bold text-gray-900 mb-2">Are you a regional organizer?</h3>
+                <p class="text-gray-600 leading-relaxed mb-4">Help us understand your community's needs, challenges, and successes.</p>
+                <a href="#" class="inline-flex items-center px-6 py-2.5 text-sm font-bold text-white bg-pyblue rounded-lg hover:bg-pyblue-dark transition-colors shadow-md">
+                    Connect With Us
+                    <i class="fa-solid fa-arrow-right ml-2 text-xs" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}
