@@ -1,4 +1,6 @@
 from datetime import datetime
+import json
+from pathlib import Path
 
 AUTHOR = "Python D&I Workgroup"
 SITENAME = "Python Diversity & Inclusion Workgroup"
@@ -34,6 +36,10 @@ SOCIAL = (
 )
 
 DEFAULT_PAGINATION = 10
+
+# Page URLs
+PAGE_URL = '{slug}.html'
+PAGE_SAVE_AS = '{slug}.html'
 
 # Static paths
 STATIC_PATHS = ["images", "extra"]
@@ -101,21 +107,27 @@ VALUES = [
 WHAT_WE_DO = [
     {
         "title": "Global Community Mapping",
+        "headline": "Mapping the Global Python Community",
+        "subheadline": "Before we can serve the worldwide Python community, we need to understand it. This initiative creates a comprehensive picture of Python communities across the globe.",
         "description": "We're building a comprehensive picture of Python communities around the world—who they are, where they are, and what they need to thrive.",
         "link_text": "Learn more about Community Mapping",
-        "link_url": "#",
+        "link_url": "global-community-mapping.html",
     },
     {
         "title": "Community Organizer Kit",
+        "headline": "The Community Organizer Kit",
+        "subheadline": "Practical tools and resources to help you build inclusive Python communities—no matter where you are or how much experience you have.",
         "description": "Practical resources, templates, and guides to help local Python organizers build inclusive events and communities from the ground up.",
         "link_text": "Explore the Organizer Kit",
-        "link_url": "#",
+        "link_url": "community-organizer-kit.html",
     },
     {
         "title": "Community Surveys & Research",
+        "headline": "Understanding Our Community Through Data",
+        "subheadline": "We can't fix what we don't measure. Our surveys and research help us understand who's in the Python community, who's missing, and what barriers exist.",
         "description": "Data-driven insights into who makes up our community, what barriers they face, and how we can do better.",
         "link_text": "See Our Research",
-        "link_url": "#",
+        "link_url": "community-surveys-research.html",
     },
 ]
 
@@ -155,6 +167,29 @@ GET_INVOLVED = {
     ],
 }
 
+# Load member data from individual JSON files
+MEMBERS_DIR = Path(__file__).parent / "members"
+MEMBERS = []
+if MEMBERS_DIR.exists():
+    for f in sorted(MEMBERS_DIR.glob("*.json")):
+        with open(f, "r", encoding="utf-8") as fh:
+            MEMBERS.append(json.load(fh))
+
+# Derive leadership from member roles
+LEADERSHIP_MEMBERS = [m for m in MEMBERS if m.get("role")]
+
+# Group active members by region
+MEMBERS_BY_REGION = {}
+for m in MEMBERS:
+    if m.get("active") and not m.get("role"):
+        region = m.get("region") or "Other"
+        MEMBERS_BY_REGION.setdefault(region, []).append(m)
+
+PAST_MEMBERS = [m for m in MEMBERS if not m.get("active")]
+
+# Fallback placeholder image helper
+MEMBER_PLACEHOLDER = "https://picsum.photos/seed/{seed}/400/500"
+
 LEADERSHIP = {
     "chair": "Georgi Ker",
     "co_chair": "Nathan Bransby",
@@ -172,7 +207,7 @@ FOOTER_CTA = {
     "subheadline": "Will you help us build it?",
     "buttons": [
         {"text": "Get Involved", "url": "#", "style": "primary"},
-        {"text": "Read Our Charter", "url": "#", "style": "secondary"},
+        {"text": "Read Our Charter", "url": "charter.html", "style": "secondary"},
     ],
 }
 
