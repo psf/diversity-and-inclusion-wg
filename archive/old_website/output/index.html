@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building a Python Community Where Everyone Belongs — Python Diversity & Inclusion Workgroup</title>
+    <meta name="description" content="Python Diversity & Inclusion Workgroup — ensuring Python's global community reflects the diversity of the world we live in.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pyblue: { DEFAULT: '#3776AB', dark: '#2d5f8a', light: '#4a8bc2' },
+                        pyellow: { DEFAULT: '#FFD43B', dark: '#e6c035' },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="icon" type="image/x-icon" href="https://www.python.org/static/favicon.ico">
+    <link rel="stylesheet" href="/theme/css/style.css">
+<style>
+    .alternating-sections > section:nth-child(odd) {
+        background-color: #ffffff;
+    }
+    .alternating-sections > section:nth-child(even) {
+        background-color: #f9fafb;
+    }
+</style>
+</head>
+<body class="font-sans antialiased bg-white text-gray-900">
+
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:bg-pyblue focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-bold">
+        Skip to main content
+    </a>
+
+    <header class="bg-white/90 backdrop-blur border-b border-gray-200 sticky top-0 z-40 h-16" role="banner">
+        <div class="max-w-6xl mx-auto px-6 h-full flex items-center justify-between">
+            <a href="/" class="flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-pyblue focus-visible:ring-offset-2 rounded-lg" aria-label="Python Diversity and Inclusion Workgroup — Home">
+                <img src="/theme/images/python-logo.svg" alt="" class="w-[140px] h-[42px] sm:w-[216px] sm:h-[64px]">
+                <span class="flex flex-col leading-tight">
+                    <span class="text-sm sm:text-xl font-extrabold" style="color:#1a2f4a;">the diversity &amp;</span>
+                    <span class="text-sm sm:text-xl font-extrabold" style="color:#1a2f4a;">inclusion workgroup</span>
+                </span>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-6" aria-label="Main navigation">
+                <a href="https://www.python.org/" class="text-sm font-semibold text-gray-500 hover:text-pyblue transition-colors">Python.org</a>
+                <a href="https://www.python.org/psf/" class="text-sm font-semibold text-gray-500 hover:text-pyblue transition-colors">PSF</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <a href="#initiatives" class="hidden sm:inline-flex items-center px-5 py-2.5 text-sm font-bold text-white bg-pyblue rounded-lg hover:bg-pyblue-dark transition-colors shadow-sm">
+                    Explore Our Work
+                </a>
+                <button type="button" id="menu-btn" class="md:hidden p-2.5 rounded-lg text-gray-700 hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-pyblue" aria-label="Menu" aria-expanded="false" aria-controls="menu">
+                    <i class="fa-solid fa-bars" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+        <div id="menu" class="hidden md:hidden border-t border-gray-100 bg-white">
+            <div class="max-w-6xl mx-auto px-6 py-2 space-y-1">
+                <a href="https://www.python.org/" class="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-pyblue hover:bg-gray-50 rounded">Python.org</a>
+                <a href="https://www.python.org/psf/" class="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-pyblue hover:bg-gray-50 rounded">PSF</a>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+
+<!-- Hero -->
+<section class="min-h-screen pt-16 flex items-center bg-gradient-to-br from-white via-blue-50/40 to-white" aria-labelledby="hero-heading">
+    <div class="max-w-6xl mx-auto px-6 py-8 w-full">
+        <div class="grid lg:grid-cols-2 gap-10 items-center">
+            <div>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pyblue/10 text-pyblue text-xs font-bold uppercase tracking-wider mb-5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-pyblue animate-pulse"></span>
+                    Python Software Foundation
+                </div>
+                <h1 id="hero-heading" class="text-4xl lg:text-5xl font-black leading-tight tracking-tight text-gray-900">
+                    Building a Python Community Where Everyone Belongs
+                </h1>
+                <p class="mt-5 text-lg text-gray-600 leading-relaxed max-w-lg">
+                    The Diversity & Inclusion Workgroup works to ensure that Python's global community reflects the diversity of the world we live in—and that every Pythonista feels welcome, valued, and empowered to participate.
+                </p>
+                <div class="mt-7 flex flex-wrap gap-3">
+                    <a href="#initiatives" class="inline-flex items-center px-6 py-2.5 text-sm font-bold text-white bg-pyblue rounded-lg hover:bg-pyblue-dark transition-colors shadow-md">
+                        Explore Our Work
+                        <i class="fa-solid fa-arrow-right ml-2 text-xs" aria-hidden="true"></i>
+                    </a>
+                    <a href="#beliefs" class="inline-flex items-center px-6 py-2.5 text-sm font-semibold text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+            <div>
+                <div class="rounded-xl border border-gray-200 shadow-xl overflow-hidden bg-gray-50">
+                    <img src="https://z-cdn-media.chatglm.cn/files/cffc90aa-bc97-45b6-8a4d-d8871465d3aa.png?auth_key=1878075046-8a8d0a90f1c24a818dca6246d7e42d4b-0-a0cd9bf3667458fcb14e5cd5f7559d78"
+                        alt="Python Diversity Initiative community mapping interface"
+                        class="w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="alternating-sections">
+<!-- Beliefs -->
+<section id="beliefs" class="min-h-screen flex items-center" aria-labelledby="beliefs-heading">
+    <div class="max-w-6xl mx-auto px-6 py-8 w-full">
+        <div class="text-center mb-10">
+            <span class="text-xs font-bold uppercase tracking-widest text-pyblue mb-2 block">What We Believe</span>
+            <h2 id="beliefs-heading" class="text-3xl lg:text-4xl font-black tracking-tight text-gray-900">Three beliefs that drive every decision.</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+            <article class="bg-gray-50 border border-gray-200 rounded-xl p-8 hover:border-pyblue/50 hover:shadow-lg transition-all duration-300">
+                <div class="w-14 h-14 rounded-xl bg-pyblue/10 flex items-center justify-center mb-5">
+                    <span class="text-pyblue font-black text-xl">01</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Python is for everyone.</h3>
+                <p class="text-gray-600 leading-relaxed">But "everyone" only becomes real when we actively work to include people who have historically been left out of tech spaces.</p>
+            </article>
+            <article class="bg-gray-50 border border-gray-200 rounded-xl p-8 hover:border-pyblue/50 hover:shadow-lg transition-all duration-300">
+                <div class="w-14 h-14 rounded-xl bg-pyblue/10 flex items-center justify-center mb-5">
+                    <span class="text-pyblue font-black text-xl">02</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Diversity</h3>
+                <p class="text-gray-600 leading-relaxed">Diversity is about who's in the room—the full range of backgrounds, identities, experiences, and perspectives that make our community rich.</p>
+            </article>
+            <article class="bg-gray-50 border border-gray-200 rounded-xl p-8 hover:border-pyblue/50 hover:shadow-lg transition-all duration-300">
+                <div class="w-14 h-14 rounded-xl bg-pyblue/10 flex items-center justify-center mb-5">
+                    <span class="text-pyblue font-black text-xl">03</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Inclusion</h3>
+                <p class="text-gray-600 leading-relaxed">Inclusion is about what happens once you're here—whether you can participate fully, be heard, grow, and thrive.</p>
+            </article>
+        </div>
+
+        <p class="mt-10 text-center text-lg text-gray-700 font-medium max-w-2xl mx-auto">
+            We exist to move Python from aspiration to action on both fronts.
+        </p>
+    </div>
+</section>
+
+<!-- Values -->
+<section class="min-h-screen flex items-center" aria-labelledby="values-heading">
+    <div class="max-w-6xl mx-auto px-6 py-8 w-full">
+        <div class="text-center mb-10">
+            <span class="text-xs font-bold uppercase tracking-widest text-pyblue mb-2 block">Core Values</span>
+            <h2 id="values-heading" class="text-3xl lg:text-4xl font-black tracking-tight text-gray-900">Our Values Guide Everything We Do</h2>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <article class="bg-white rounded-xl p-6 shadow-sm border-l-4 border-pyblue">
+                <h3 class="text-lg font-bold text-pyblue mb-2">Inclusion</h3>
+                <p class="text-gray-600 leading-relaxed">We actively create space for marginalized or overlooked voices.</p>
+            </article>
+            <article class="bg-white rounded-xl p-6 shadow-sm border-l-4 border-pyblue">
+                <h3 class="text-lg font-bold text-pyblue mb-2">Empathy</h3>
+                <p class="text-gray-600 leading-relaxed">We listen first. We seek to understand experiences different from our own.</p>
+            </article>
+            <article class="bg-white rounded-xl p-6 shadow-sm border-l-4 border-pyblue">
+                <h3 class="text-lg font-bold text-pyblue mb-2">Respect</h3>
+                <p class="text-gray-600 leading-relaxed">We treat every community member with dignity, regardless of their background or experience level.</p>
+            </article>
+            <article class="bg-white rounded-xl p-6 shadow-sm border-l-4 border-pyblue">
+                <h3 class="text-lg font-bold text-pyblue mb-2">Integrity</h3>
+                <p class="text-gray-600 leading-relaxed">We're honest about where we are, where we fall short, and what it takes to improve.</p>
+            </article>
+            <article class="bg-white rounded-xl p-6 shadow-sm border-l-4 border-pyblue">
+                <h3 class="text-lg font-bold text-pyblue mb-2">Equity</h3>
+                <p class="text-gray-600 leading-relaxed">We recognize that equal treatment isn't always fair treatment—some communities need more support to participate fully.</p>
+            </article>
+            <article class="bg-white rounded-xl p-6 shadow-sm border-l-4 border-pyblue">
+                <h3 class="text-lg font-bold text-pyblue mb-2">Belonging</h3>
+                <p class="text-gray-600 leading-relaxed">Our goal isn't just to invite people in, but to make sure they want to stay.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- Initiatives -->
+<section id="initiatives" class="min-h-screen flex items-center" aria-labelledby="initiatives-heading">
+    <div class="max-w-6xl mx-auto px-6 py-8 w-full">
+        <div class="text-center mb-10 max-w-2xl mx-auto">
+            <span class="text-xs font-bold uppercase tracking-widest text-pyblue mb-2 block">Our Work</span>
+            <h2 id="initiatives-heading" class="text-3xl lg:text-4xl font-black tracking-tight text-gray-900 mb-4">How We're Making a Difference</h2>
+            <p class="text-lg text-gray-600">We focus on three areas: understanding the global Python community, equipping organizers with the tools they need, and advocating for equitable policies within the PSF.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+            <a href="global-community-mapping.html" class="group bg-gray-50 border border-gray-200 rounded-xl p-8 hover:border-pyblue/50 hover:shadow-xl transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-pyblue focus-visible:ring-offset-2" aria-label="Learn more about Community Mapping">
+                <div class="w-10 h-10 rounded-lg bg-pyblue flex items-center justify-center mb-5 shadow-lg shadow-pyblue/30">
+                    <i class="fa-solid fa-arrow-up-right-from-square text-white text-sm" aria-hidden="true"></i>
+                </div>
+                <h3 class="text-xl font-bold text-pyblue mb-3">Mapping the Global Python Community</h3>
+                <p class="text-gray-600 leading-relaxed mb-4">Before we can serve the worldwide Python community, we need to understand it. This initiative creates a comprehensive picture of Python communities across the globe.</p>
+                <span class="inline-flex items-center text-sm font-bold text-pyblue group-hover:text-pyblue-dark transition-colors">
+                    Learn more about Community Mapping
+                    <i class="fa-solid fa-arrow-right ml-1.5 text-xs" aria-hidden="true"></i>
+                </span>
+            </a>
+            <a href="community-organizer-kit.html" class="group bg-gray-50 border border-gray-200 rounded-xl p-8 hover:border-pyblue/50 hover:shadow-xl transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-pyblue focus-visible:ring-offset-2" aria-label="Explore the Organizer Kit">
+                <div class="w-10 h-10 rounded-lg bg-pyblue flex items-center justify-center mb-5 shadow-lg shadow-pyblue/30">
+                    <i class="fa-solid fa-arrow-up-right-from-square text-white text-sm" aria-hidden="true"></i>
+                </div>
+                <h3 class="text-xl font-bold text-pyblue mb-3">The Community Organizer Kit</h3>
+                <p class="text-gray-600 leading-relaxed mb-4">Practical tools and resources to help you build inclusive Python communities—no matter where you are or how much experience you have.</p>
+                <span class="inline-flex items-center text-sm font-bold text-pyblue group-hover:text-pyblue-dark transition-colors">
+                    Explore the Organizer Kit
+                    <i class="fa-solid fa-arrow-right ml-1.5 text-xs" aria-hidden="true"></i>
+                </span>
+            </a>
+            <a href="community-surveys-research.html" class="group bg-gray-50 border border-gray-200 rounded-xl p-8 hover:border-pyblue/50 hover:shadow-xl transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-pyblue focus-visible:ring-offset-2" aria-label="See Our Research">
+                <div class="w-10 h-10 rounded-lg bg-pyblue flex items-center justify-center mb-5 shadow-lg shadow-pyblue/30">
+                    <i class="fa-solid fa-arrow-up-right-from-square text-white text-sm" aria-hidden="true"></i>
+                </div>
+                <h3 class="text-xl font-bold text-pyblue mb-3">Understanding Our Community Through Data</h3>
+                <p class="text-gray-600 leading-relaxed mb-4">We can't fix what we don't measure. Our surveys and research help us understand who's in the Python community, who's missing, and what barriers exist.</p>
+                <span class="inline-flex items-center text-sm font-bold text-pyblue group-hover:text-pyblue-dark transition-colors">
+                    See Our Research
+                    <i class="fa-solid fa-arrow-right ml-1.5 text-xs" aria-hidden="true"></i>
+                </span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Impact -->
+<section id="impact" class="min-h-screen flex items-center" aria-labelledby="impact-heading">
+    <div class="max-w-6xl mx-auto px-6 py-8 w-full">
+        <div class="text-center mb-10 max-w-2xl mx-auto">
+            <span class="text-xs font-bold uppercase tracking-widest text-pyblue mb-2 block">Impact</span>
+            <h2 id="impact-heading" class="text-3xl lg:text-4xl font-black tracking-tight text-gray-900 mb-4">What's Changed Because of This Work</h2>
+            <p class="text-lg text-gray-600">We don't just talk about inclusion—we measure it.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <article class="bg-white rounded-xl p-6 shadow-sm">
+                <div class="w-10 h-10 rounded-lg bg-pyellow/30 flex items-center justify-center mb-3">
+                    <i class="fa-solid fa-chart-line text-gray-900 text-sm" aria-hidden="true"></i>
+                </div>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">Grants Equity</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">In 2022, only 2% of PSF grants went to Asia. By 2023, that number grew to 15%. We advocated for geographic equity in grant distribution, and it's working.</p>
+            </article>
+            <article class="bg-white rounded-xl p-6 shadow-sm">
+                <div class="w-10 h-10 rounded-lg bg-pyellow/30 flex items-center justify-center mb-3">
+                    <i class="fa-solid fa-chart-line text-gray-900 text-sm" aria-hidden="true"></i>
+                </div>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">Global Representation</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">In 2020, East and Southeast Asia had almost no representation on the PSF Board. Today, 3 of 12 board members come from these regions.</p>
+            </article>
+            <article class="bg-white rounded-xl p-6 shadow-sm">
+                <div class="w-10 h-10 rounded-lg bg-pyellow/30 flex items-center justify-center mb-3">
+                    <i class="fa-solid fa-chart-line text-gray-900 text-sm" aria-hidden="true"></i>
+                </div>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">Community Insights</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">Our Asia-Pacific survey revealed that 73% of respondents didn't know what the PSF does, and 88% had never voted in a board election. This data is driving real change.</p>
+            </article>
+            <article class="bg-white rounded-xl p-6 shadow-sm">
+                <div class="w-10 h-10 rounded-lg bg-pyellow/30 flex items-center justify-center mb-3">
+                    <i class="fa-solid fa-chart-line text-gray-900 text-sm" aria-hidden="true"></i>
+                </div>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">New Organizations</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">The insights from our work directly inspired the founding of the Python Asia Organization (PAO) in 2024—creating permanent infrastructure for regional community building.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- Team -->
+<section class="min-h-screen flex items-center" aria-labelledby="who-we-are-heading">
+    <div class="max-w-6xl mx-auto px-6 py-8 w-full">
+        <div class="text-center mb-10 max-w-3xl mx-auto">
+            <span class="text-xs font-bold uppercase tracking-widest text-pyblue mb-2 block">The Team</span>
+            <h2 id="who-we-are-heading" class="text-3xl lg:text-4xl font-black tracking-tight text-gray-900 mb-4">A Global Team, Working Together</h2>
+            <p class="text-lg text-gray-600">
+                The D&amp;I Workgroup is made up of 20+ volunteers from every inhabited continent—from Thailand to Germany, Nigeria to Brazil, China to Argentina, Kenya to Zimbabwe, India to Israel, and beyond.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6" role="list" aria-label="Workgroup leadership">
+            <div class="bg-white rounded-xl p-6 shadow-sm text-center" role="listitem">
+                <img src="/theme/images/Portrait_Placeholder.png" alt="Georgi Ker" class="w-full aspect-square object-cover rounded-lg mb-4 bg-gray-200">
+                <div class="text-xl font-bold text-gray-900">Georgi Ker</div>
+                <div class="text-sm text-pyblue font-medium mt-1">Chair</div>
+            </div>
+            <div class="bg-white rounded-xl p-6 shadow-sm text-center" role="listitem">
+                <img src="/theme/images/Portrait_Placeholder.png" alt="Marie Nordin" class="w-full aspect-square object-cover rounded-lg mb-4 bg-gray-200">
+                <div class="text-xl font-bold text-gray-900">Marie Nordin</div>
+                <div class="text-sm text-pyblue font-medium mt-1">PSF Staff Contact</div>
+            </div>
+            <div class="bg-white rounded-xl p-6 shadow-sm text-center" role="listitem">
+                <img src="/theme/images/Portrait_Placeholder.png" alt="Nathan Bransby" class="w-full aspect-square object-cover rounded-lg mb-4 bg-gray-200">
+                <div class="text-xl font-bold text-gray-900">Nathan Bransby</div>
+                <div class="text-sm text-pyblue font-medium mt-1">Co-Chair</div>
+            </div>
+        </div>
+
+        <p class="text-center mt-10">
+            <a href="members.html" class="inline-flex items-center text-sm font-bold text-pyblue hover:text-pyblue-dark transition-colors" aria-label="See all current workgroup members">
+                See all current members
+                <i class="fa-solid fa-arrow-right ml-1.5 text-xs" aria-hidden="true"></i>
+            </a>
+        </p>
+    </div>
+</section>
+
+<!-- Connect -->
+<section id="connect" class="min-h-screen flex items-center" aria-labelledby="connect-heading">
+    <div class="max-w-6xl mx-auto px-6 py-8 w-full">
+        <div class="text-center mb-10 max-w-2xl mx-auto">
+            <span class="text-xs font-bold uppercase tracking-widest text-pyblue mb-2 block">Contact</span>
+            <h2 id="connect-heading" class="text-3xl lg:text-4xl font-black tracking-tight text-gray-900 mb-4">Let's Talk</h2>
+            <p class="text-lg text-gray-600">Have questions? Ideas? Feedback on how we can do better?<br>We'd love to hear from you.</p>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-6">
+            <a href="mailto:diversity-inclusion-wg@python.org" class="w-80 bg-gray-50 border border-gray-200 rounded-xl p-8 text-center hover:border-pyblue/50 hover:shadow-xl transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-pyblue focus-visible:ring-offset-2">
+                <div class="w-14 h-14 rounded-2xl bg-pyblue/10 flex items-center justify-center mx-auto mb-5">
+                    <i class="fa-solid fa-envelope text-pyblue text-xl" aria-hidden="true"></i>
+                </div>
+                <h3 class="text-sm font-bold text-gray-900 mb-1">Email</h3>
+                <span class="text-sm text-pyblue font-semibold">diversity-inclusion-wg@python.org</span>
+            </a>
+            <a href="#" class="w-80 bg-gray-50 border border-gray-200 rounded-xl p-8 text-center hover:border-pyblue/50 hover:shadow-xl transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-pyblue focus-visible:ring-offset-2">
+                <div class="w-14 h-14 rounded-2xl bg-pyblue/10 flex items-center justify-center mx-auto mb-5">
+                    <i class="fa-brands fa-discord text-pyblue text-xl" aria-hidden="true"></i>
+                </div>
+                <h3 class="text-sm font-bold text-gray-900 mb-1">Discord</h3>
+                <span class="text-sm text-pyblue font-semibold">#diversity-and-inclusion</span>
+            </a>
+            <a href="#" class="w-80 bg-gray-50 border border-gray-200 rounded-xl p-8 text-center hover:border-pyblue/50 hover:shadow-xl transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-pyblue focus-visible:ring-offset-2">
+                <div class="w-14 h-14 rounded-2xl bg-pyblue/10 flex items-center justify-center mx-auto mb-5">
+                    <i class="fa-solid fa-file-lines text-pyblue text-xl" aria-hidden="true"></i>
+                </div>
+                <h3 class="text-sm font-bold text-gray-900 mb-1">Reports</h3>
+                <span class="text-sm text-pyblue font-semibold">Read our updates to the PSF Board</span>
+            </a>
+        </div>
+    </div>
+</section>
+</div>
+
+<!-- CTA -->
+<section class="min-h-screen flex items-center bg-pyblue relative overflow-hidden" aria-labelledby="cta-heading">
+    <div class="absolute inset-0 bg-gradient-to-br from-pyblue via-pyblue to-pyblue-dark"></div>
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-pyellow/10 rounded-full blur-[120px]"></div>
+    <div class="absolute bottom-0 left-0 w-[300px] h-[300px] bg-white/5 rounded-full blur-[80px]"></div>
+
+    <div class="relative max-w-3xl mx-auto px-6 text-center">
+        <h2 id="cta-heading" class="text-3xl lg:text-5xl font-black text-white tracking-tight mb-4">The Python community is stronger when it includes everyone.</h2>
+        <p class="text-lg text-white/90 mb-10">Will you help us build it?</p>
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="#" class="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold rounded-xl transition-colors min-h-[3rem]
+                    bg-pyellow text-gray-900 hover:bg-pyellow-dark shadow-lg
+">
+                Get Involved
+            </a>
+            <a href="charter.html" class="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold rounded-xl transition-colors min-h-[3rem]
+                    bg-white/10 text-white border border-white/30 hover:bg-white/20
+">
+                Read Our Charter
+            </a>
+        </div>
+    </div>
+</section>
+
+    </main>
+
+    <footer class="bg-gray-900 text-white" role="contentinfo">
+        <div class="h-1.5 bg-pyellow"></div>
+        <div class="max-w-6xl mx-auto px-6 py-10">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-2 text-lg font-bold">
+                    <i class="fa-brands fa-python text-pyellow text-2xl" aria-hidden="true"></i>
+                    <span>Python D&amp;I Workgroup</span>
+                </div>
+                <nav aria-label="Footer">
+                    <ul class="flex flex-wrap justify-center gap-5 text-sm text-gray-400">
+                        <li><a href="/#initiatives" class="hover:text-white transition-colors">What We Do</a></li>
+                        <li><a href="/#impact" class="hover:text-white transition-colors">Impact</a></li>
+                        <li><a href="/#connect" class="hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </nav>
+                <p class="text-xs text-gray-500">&copy; 2026 Python D&amp;I Workgroup</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function(){
+            var b=document.getElementById('menu-btn'),m=document.getElementById('menu');
+            if(!b||!m)return;
+            b.addEventListener('click',function(e){e.stopPropagation();var x=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',String(!x));m.classList.toggle('hidden');});
+            document.addEventListener('click',function(e){if(!b.contains(e.target)&&!m.contains(e.target)){b.setAttribute('aria-expanded','false');m.classList.add('hidden');}});
+        })();
+    </script>
+
+</body>
+</html>
