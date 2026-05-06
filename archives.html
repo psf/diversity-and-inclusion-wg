@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Diversity & Inclusion Workgroup - Archives</title>
+    <meta name="description" content="Python Diversity & Inclusion Workgroup — ensuring Python's global community reflects the diversity of the world we live in.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pyblue: { DEFAULT: '#3776AB', dark: '#2d5f8a', light: '#4a8bc2' },
+                        pyellow: { DEFAULT: '#FFD43B', dark: '#e6c035' },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="icon" type="image/x-icon" href="https://www.python.org/static/favicon.ico">
+    <link rel="stylesheet" href="https://psf.github.io/diversity-and-inclusion-wg/theme/css/style.css">
+</head>
+<body class="font-sans antialiased bg-white text-gray-900">
+
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:bg-pyblue focus:text-white focus:px-4 focus:py-2 focus:rounded focus:font-bold">
+        Skip to main content
+    </a>
+
+    <header class="bg-white/90 backdrop-blur border-b border-gray-200 sticky top-0 z-40 h-16" role="banner">
+        <div class="max-w-6xl mx-auto px-6 h-full flex items-center justify-between">
+            <a href="https://psf.github.io/diversity-and-inclusion-wg/" class="flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-pyblue focus-visible:ring-offset-2 rounded-lg" aria-label="Python Diversity and Inclusion Workgroup — Home">
+                <img src="https://psf.github.io/diversity-and-inclusion-wg/theme/images/python-logo.svg" alt="" class="w-[140px] h-[42px] sm:w-[216px] sm:h-[64px]">
+                <span class="flex flex-col leading-tight">
+                    <span class="text-sm sm:text-xl font-extrabold" style="color:#1a2f4a;">the diversity &amp;</span>
+                    <span class="text-sm sm:text-xl font-extrabold" style="color:#1a2f4a;">inclusion workgroup</span>
+                </span>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-6" aria-label="Main navigation">
+                <a href="https://www.python.org/" class="text-sm font-semibold text-gray-500 hover:text-pyblue transition-colors">Python.org</a>
+                <a href="https://www.python.org/psf/" class="text-sm font-semibold text-gray-500 hover:text-pyblue transition-colors">PSF</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <a href="#initiatives" class="hidden sm:inline-flex items-center px-5 py-2.5 text-sm font-bold text-white bg-pyblue rounded-lg hover:bg-pyblue-dark transition-colors shadow-sm">
+                    Explore Our Work
+                </a>
+                <button type="button" id="menu-btn" class="md:hidden p-2.5 rounded-lg text-gray-700 hover:bg-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-pyblue" aria-label="Menu" aria-expanded="false" aria-controls="menu">
+                    <i class="fa-solid fa-bars" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+        <div id="menu" class="hidden md:hidden border-t border-gray-100 bg-white">
+            <div class="max-w-6xl mx-auto px-6 py-2 space-y-1">
+                <a href="https://www.python.org/" class="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-pyblue hover:bg-gray-50 rounded">Python.org</a>
+                <a href="https://www.python.org/psf/" class="block px-3 py-2 text-sm font-medium text-gray-700 hover:text-pyblue hover:bg-gray-50 rounded">PSF</a>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+    <h2>Archives for Python Diversity & Inclusion Workgroup</h2>
+
+    <dl>
+    </dl>
+    </main>
+
+    <footer class="bg-gray-900 text-white" role="contentinfo">
+        <div class="h-1.5 bg-pyellow"></div>
+        <div class="max-w-6xl mx-auto px-6 py-10">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-2 text-lg font-bold">
+                    <i class="fa-brands fa-python text-pyellow text-2xl" aria-hidden="true"></i>
+                    <span>Python D&amp;I Workgroup</span>
+                </div>
+                <nav aria-label="Footer">
+                    <ul class="flex flex-wrap justify-center gap-5 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">What We Do</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Impact</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </nav>
+                <p class="text-xs text-gray-500">&copy; 2026 Python D&amp;I Workgroup</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function(){
+            var b=document.getElementById('menu-btn'),m=document.getElementById('menu');
+            if(!b||!m)return;
+            b.addEventListener('click',function(e){e.stopPropagation();var x=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',String(!x));m.classList.toggle('hidden');});
+            document.addEventListener('click',function(e){if(!b.contains(e.target)&&!m.contains(e.target)){b.setAttribute('aria-expanded','false');m.classList.add('hidden');}});
+        })();
+    </script>
+
+</body>
+</html>
