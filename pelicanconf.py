@@ -38,8 +38,8 @@ SOCIAL = (
 DEFAULT_PAGINATION = 10
 
 # Page URLs
-PAGE_URL = '{slug}.html'
-PAGE_SAVE_AS = '{slug}.html'
+PAGE_URL = "{slug}.html"
+PAGE_SAVE_AS = "{slug}.html"
 
 # Static paths
 STATIC_PATHS = ["images", "extra"]
@@ -73,9 +73,7 @@ BELIEFS = [
     },
 ]
 
-BELIEFS_FOOTER = (
-    "We exist to move Python from aspiration to action on both fronts."
-)
+BELIEFS_FOOTER = "We exist to move Python from aspiration to action on both fronts."
 
 VALUES = [
     {
@@ -194,9 +192,24 @@ LEADERSHIP = {
 }
 
 CONNECT = [
-    {"label": "Email", "value": "diversity-inclusion-wg@python.org", "url": "mailto:diversity-inclusion-wg@python.org", "icon": "fa-solid fa-envelope"},
-    {"label": "Slack", "value": "#diversity-inclusion (PSF Discord)", "url": "#", "icon": "fa-brands fa-slack"},
-    {"label": "Reports", "value": "Read our updates to the PSF Board", "url": "#", "icon": "fa-solid fa-file-lines"},
+    {
+        "label": "Email",
+        "value": "diversity-inclusion-wg@python.org",
+        "url": "mailto:diversity-inclusion-wg@python.org",
+        "icon": "fa-solid fa-envelope",
+    },
+    {
+        "label": "Discord",
+        "value": "#diversity-and-inclusion",
+        "url": "#",
+        "icon": "fa-brands fa-discord",
+    },
+    {
+        "label": "Reports",
+        "value": "Read our updates to the PSF Board",
+        "url": "#",
+        "icon": "fa-solid fa-file-lines",
+    },
 ]
 
 FOOTER_CTA = {
