@@ -28,6 +28,8 @@ The theme is a paid licensed theme from https://shock-html.codings.dev/.
 | Static Site Generator | Pelican | >= 4.12.0 |
 | Markdown Parser | Python-Markdown | >= 3.10.2 |
 | Templating | Jinja2 | (via Pelican) |
+| Frontend CSS Framework | Tailwind CSS | CDN |
+| Frontend Components | Custom components | Tailwind utilities |
 | Frontend Fonts | Google Fonts (Inter) | — |
 | Frontend Icons | Font Awesome 6.4.0 | CDN |
 
@@ -62,8 +64,8 @@ The theme is a paid licensed theme from https://shock-html.codings.dev/.
 - **`pelicanconf.py`**: Defines site metadata (`SITENAME`, `AUTHOR`, `THEME = "theme"`), content paths (`PAGE_PATHS = ["pages"]`), and large data structures (`BELIEFS`, `VALUES`, `TEAM_MEMBERS`) that feed the Jinja2 templates. Feeds are disabled for development.
 - **`publishconf.py`**: Imports everything from `pelicanconf.py`, sets a production `SITEURL`, enables Atom feeds, and sets `DELETE_OUTPUT_DIRECTORY = True`. **Note**: The `SITEURL` currently points to a placeholder domain (`diversity-and-inclusion-wg.example.com`).
 - **`content/pages/index.md`**: The sole Markdown content file. Uses Pelican metadata (`Title`, `Slug`, `URL`, `Save_as`, `Template: home`) to render as the homepage.
-- **`theme/templates/base.html`**: References `{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/style.css`, but **no such CSS file exists** in `theme/static/css/`.
-- **`index.html` (root)**: The currently live page. It duplicates the design from the templates but is completely self-contained.
+- **`theme/templates/base.html`**: Custom Tailwind navbar, skip-to-content link, semantic landmarks (`<header>`, `<nav>`, `<main>`, `<footer>`), ARIA labels, and responsive mobile menu. Loads Tailwind CSS from CDN.
+- **`theme/templates/home.html`**: Data-driven homepage with custom Tailwind components. Dark/light alternating sections, gradient accents, and accessibility-compliant markup with proper heading hierarchy and ARIA attributes.
 
 ---
 
