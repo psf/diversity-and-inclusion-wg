@@ -133,13 +133,10 @@ If the member has a Gravatar account, use their email hash:
 }
 ```
 
-To get the MD5 hash of an email address:
-
-```bash
+# To use Gravatar, generate the MD5 hash of the email:
 echo -n "user@example.com" | md5sum
-```
-
-Or use an online MD5 generator. Replace `YOUR_MD5_HASH` with the result.
+# Then construct the URL yourself:
+# https://www.gravatar.com/avatar/YOUR_MD5_HASH?s=400d=identicon
 
 ### Option 3: Placeholder (default)
 
