@@ -199,6 +199,3 @@ The site is deployed to GitHub Pages. To deploy:
 
 Ask for help in the Diversity and Inclusion workgroup - Python Software Foundation Slack (thepsf.slack.com) in the `#/diversity-and-inclusion` channel.
 
-## Acknowledgements
-
-This theme is a paid licensed theme from https://shock-html.codings.dev/.
