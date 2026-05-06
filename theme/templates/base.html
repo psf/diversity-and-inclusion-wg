@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="{{ DEFAULT_LANG }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/style.css">
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container nav-wrapper">
+            <a href="{{ SITEURL }}/" class="logo">
+                <i class="fa-brands fa-python fa-lg" style="color: var(--primary-blue);"></i>
+                <span>python</span>
+                <span class="logo-text">THE DIVERSITY & INCLUSION WORKGROUP</span>
+            </a>
+
+            <nav class="nav-links">
+                {% for name, link in LINKS %}
+                <a href="{{ link }}">{{ name }}</a>
+                {% endfor %}
+            </nav>
+
+            <div class="auth-buttons">
+                <a href="#" class="btn btn-text btn-small">Log In</a>
+                <a href="#" class="btn btn-primary btn-small">Start Free Trial</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <i class="fa-brands fa-python"></i> Python D&I Workgroup
+            </div>
+            <div class="footer-links">
+                <a href="#">What We Do</a>
+                <a href="#">How We're Making a Difference</a>
+                <a href="#">Contact</a>
+            </div>
+            <div style="font-size: 0.85rem; color: #6B7280;">
+                &copy; {{ CURRENT_YEAR | default(2026) }} Python Diversity & Inclusion Workgroup. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

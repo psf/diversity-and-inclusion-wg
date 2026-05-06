@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} — {{ SITENAME }}{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container hero-grid">
+        <div class="hero-content">
+            <h1>{{ page.title }}</h1>
+            <p>{{ page.content | striptags }}</p>
+            <div style="display: flex; gap: 16px;">
+                <a href="#" class="btn btn-primary" style="background-color: var(--accent-blue); border-color: var(--accent-blue);">Get Involved &rarr;</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="interface-preview">
+                <img src="https://z-cdn-media.chatglm.cn/files/cffc90aa-bc97-45b6-8a4d-d8871465d3aa.png?auth_key=1878075046-8a8d0a90f1c24a818dca6246d7e42d4b-0-a0cd9bf3667458fcb14e5cd5f7559d78"
+                    alt="Python Diversity Initiative Interface">
+                <div class="play-overlay">
+                    <i class="fa-solid fa-play"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Mission / What We Believe Section -->
+<section class="section-padding beliefs">
+    <div class="container">
+        <div class="text-center">
+            <h2>What We Believe</h2>
+        </div>
+
+        <div class="grid-3">
+            {% for belief in BELIEFS %}
+            <div class="belief-card">
+                <h3>{{ belief.title }}</h3>
+                <p>{{ belief.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <p class="text-center" style="margin-top: 32px; font-size: 1.125rem; color: var(--text-gray); font-weight: 500;">
+            {{ BELIEFS_FOOTER }}
+        </p>
+    </div>
+</section>
+
+<!-- Core Values Section -->
+<section class="section-padding values">
+    <div class="container">
+        <div class="section-header-values">
+            <span class="eyebrow">Core Values</span>
+            <h2>Our Values Guide Everything We Do</h2>
+        </div>
+
+        <div class="grid-3">
+            {% for value in VALUES %}
+            <div class="value-card">
+                <h4>{{ value.title }}</h4>
+                <p>{{ value.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- What We Do Section -->
+<section class="section-padding initiatives">
+    <div class="container">
+        <div class="text-center">
+            <h2>How We're Making a Difference</h2>
+            <p class="subtitle">We focus on three areas: understanding the global Python community, equipping organizers with the tools they need, and advocating for equitable policies within the PSF.</p>
+        </div>
+
+        <div class="grid-3">
+            {% for item in WHAT_WE_DO %}
+            <div class="initiative-card">
+                <h3>{{ item.title }}</h3>
+                <p>{{ item.description }}</p>
+                <a href="{{ item.link_url }}">{{ item.link_text }} &rarr;</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Impact Section -->
+<section class="section-padding impact">
+    <div class="container">
+        <div class="text-center">
+            <h2>What's Changed Because of This Work</h2>
+            <p class="subtitle">We don't just talk about inclusion—we measure it.</p>
+        </div>
+
+        <div class="grid-4">
+            {% for item in IMPACT_ITEMS %}
+            <div class="impact-card">
+                <h4>{{ item.title }}</h4>
+                <p>{{ item.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Get Involved Section -->
+<section class="section-padding get-involved">
+    <div class="container">
+        <div class="text-center">
+            <h2>Join Us — There's a Place for You Here</h2>
+            <p class="subtitle">You don't need to be an expert. You don't need permission. You just need to care about making Python more welcoming.</p>
+        </div>
+
+        <div class="grid-3">
+            <div class="get-involved-column">
+                <h4>Start Small</h4>
+                <ul>
+                    {% for item in GET_INVOLVED.start_small %}
+                    <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="get-involved-column">
+                <h4>Go Deeper</h4>
+                <ul>
+                    {% for item in GET_INVOLVED.go_deeper %}
+                    <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="get-involved-column">
+                <h4>Become a Member</h4>
+                {% for item in GET_INVOLVED.become_member %}
+                <p>{{ item }}</p>
+                {% endfor %}
+                <a href="#" class="btn btn-primary" style="margin-top: 16px;">Apply to Join the Workgroup</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Who We Are Section -->
+<section class="section-padding who-we-are">
+    <div class="container">
+        <div class="text-center">
+            <h2>A Global Team, Working Together</h2>
+            <p class="subtitle">
+                The D&I Workgroup is made up of 20+ volunteers from every inhabited continent—from Thailand to Germany, Nigeria to Brazil, China to Argentina, Kenya to Zimbabwe, India to Israel, and beyond.
+            </p>
+            <p style="max-width: 800px; margin: 0 auto 32px auto; color: var(--text-gray); font-size: 1.05rem;">
+                We bring different perspectives, different experiences, and a shared commitment to making Python better for everyone.
+            </p>
+        </div>
+
+        <div class="leadership">
+            <div class="leadership-item">
+                <div class="name">{{ LEADERSHIP.chair }}</div>
+                <div class="role">Chair</div>
+            </div>
+            <div class="leadership-item">
+                <div class="name">{{ LEADERSHIP.co_chair }}</div>
+                <div class="role">Co-Chair</div>
+            </div>
+            <div class="leadership-item">
+                <div class="name">{{ LEADERSHIP.staff_contact }}</div>
+                <div class="role">PSF Staff Contact</div>
+            </div>
+        </div>
+
+        <p class="text-center" style="margin-top: 24px;">
+            <a href="#" style="color: var(--accent-blue); font-weight: 600;">&rarr; See all current members</a>
+        </p>
+    </div>
+</section>
+
+<!-- Connect Section -->
+<section class="section-padding connect">
+    <div class="container">
+        <div class="text-center">
+            <h2>Let's Talk</h2>
+            <p class="subtitle">Have questions? Ideas? Feedback on how we can do better?<br>We'd love to hear from you.</p>
+        </div>
+
+        <div class="connect-grid">
+            {% for item in CONNECT %}
+            <div class="connect-item">
+                <i class="{{ item.icon }}"></i>
+                <div class="label">{{ item.label }}</div>
+                <a href="{{ item.url }}">{{ item.value }}</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Footer CTA Section -->
+<section class="footer-cta">
+    <div class="container">
+        <h2>{{ FOOTER_CTA.headline }}</h2>
+        <p>{{ FOOTER_CTA.subheadline }}</p>
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+            {% for btn in FOOTER_CTA.buttons %}
+            <a href="{{ btn.url }}" class="btn {% if btn.style == 'primary' %}btn-primary{% else %}btn-secondary{% endif %}">{{ btn.text }}</a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}
