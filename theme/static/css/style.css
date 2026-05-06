@@ -1,0 +1,49 @@
+/* Python D&I Workgroup — WCAG 2.2 Compliant Styles */
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 4rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+:focus-visible {
+    outline: 3px solid #3776AB;
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+.bg-python-blue :focus-visible {
+    outline-color: #FFD43B;
+}
+
+#main-content:focus {
+    outline: none;
+}
+
+@media print {
+    header, footer {
+        display: none !important;
+    }
+    section {
+        min-height: auto !important;
+        height: auto !important;
+    }
+}
+
+@media (prefers-contrast: more) {
+    :focus-visible {
+        outline: 4px solid currentColor;
+        outline-offset: 4px;
+    }
+}

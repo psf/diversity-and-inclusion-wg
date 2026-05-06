@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.headline | default(page.title) }} | {{ SITENAME }}{% endblock %}
+
+{% block content %}
+
+<!-- Hero -->
+<section class="pt-32 pb-16 bg-gradient-to-br from-white via-blue-50/40 to-white" aria-labelledby="hero-heading">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+        <h1 id="hero-heading" class="text-4xl lg:text-5xl font-black leading-tight tracking-tight text-gray-900 mb-6">
+            {{ page.headline }}
+        </h1>
+        <p class="text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
+            {{ page.subheadline }}
+        </p>
+    </div>
+</section>
+
+<!-- Content -->
+<section class="py-12 bg-white" aria-label="Page content">
+    <div class="max-w-6xl mx-auto px-6">
+
+        <!-- Leadership -->
+        <div class="mb-16">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Leadership</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                {% for member in LEADERSHIP_MEMBERS %}
+                <div class="bg-gray-50 border border-gray-200 rounded-xl p-6 text-center">
+                    <img src="{% if member.image %}{{ member.image }}{% else %}{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/Portrait_Placeholder.png{% endif %}" alt="{{ member.name }}" class="w-full aspect-square object-cover rounded-lg mb-4 bg-gray-200">
+                    <h3 class="text-lg font-bold text-gray-900">{{ member.name }}</h3>
+                    <p class="text-sm text-pyblue font-medium mt-1">{{ member.role }}</p>
+                    {% if member.affiliation %}
+                    <p class="text-xs text-gray-500 mt-1">{{ member.affiliation }}</p>
+                    {% endif %}
+                    {% if member.socials %}
+                    <div class="flex justify-center gap-3 mt-3">
+                        {% if member.socials.twitter %}
+                        <a href="{{ member.socials.twitter }}" class="text-gray-400 hover:text-pyblue transition-colors" aria-label="{{ member.name }} on Twitter"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+                        {% endif %}
+                        {% if member.socials.github %}
+                        <a href="{{ member.socials.github }}" class="text-gray-400 hover:text-pyblue transition-colors" aria-label="{{ member.name }} on GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+                        {% endif %}
+                        {% if member.socials.linkedin %}
+                        <a href="{{ member.socials.linkedin }}" class="text-gray-400 hover:text-pyblue transition-colors" aria-label="{{ member.name }} on LinkedIn"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
+                        {% endif %}
+                        {% if member.socials.website %}
+                        <a href="{{ member.socials.website }}" class="text-gray-400 hover:text-pyblue transition-colors" aria-label="{{ member.name }}'s website"><i class="fa-solid fa-globe" aria-hidden="true"></i></a>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Current Members -->
+        {% if MEMBERS_BY_REGION %}
+        <div class="mb-16">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Current Members</h2>
+            {% for region, members in MEMBERS_BY_REGION.items() %}
+            <div class="mb-8">
+                <h3 class="text-lg font-bold text-pyblue mb-4">{{ region }}</h3>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {% for member in members %}
+                    <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center">
+                        <img src="{% if member.image %}{{ member.image }}{% else %}{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/Portrait_Placeholder.png{% endif %}" alt="{{ member.name }}" class="w-full aspect-square object-cover rounded-lg mb-3 bg-gray-200">
+                        <p class="font-bold text-gray-900 text-sm">{{ member.name }}</p>
+                        {% if member.affiliation %}
+                        <p class="text-xs text-gray-500 mt-1">{{ member.affiliation }}</p>
+                        {% endif %}
+                        {% if member.socials %}
+                        <div class="flex justify-center gap-2 mt-2">
+                            {% if member.socials.twitter %}
+                            <a href="{{ member.socials.twitter }}" class="text-gray-400 hover:text-pyblue transition-colors text-xs" aria-label="{{ member.name }} on Twitter"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+                            {% endif %}
+                            {% if member.socials.github %}
+                            <a href="{{ member.socials.github }}" class="text-gray-400 hover:text-pyblue transition-colors text-xs" aria-label="{{ member.name }} on GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+                            {% endif %}
+                            {% if member.socials.linkedin %}
+                            <a href="{{ member.socials.linkedin }}" class="text-gray-400 hover:text-pyblue transition-colors text-xs" aria-label="{{ member.name }} on LinkedIn"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
+                            {% endif %}
+                            {% if member.socials.website %}
+                            <a href="{{ member.socials.website }}" class="text-gray-400 hover:text-pyblue transition-colors text-xs" aria-label="{{ member.name }}'s website"><i class="fa-solid fa-globe" aria-hidden="true"></i></a>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Past Members -->
+        {% if PAST_MEMBERS %}
+        <div class="mb-16">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Past Members</h2>
+            <p class="text-gray-600 leading-relaxed mb-6">We're grateful to everyone who has contributed to this work over the years.</p>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {% for member in PAST_MEMBERS %}
+                <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center opacity-70">
+                    <img src="{% if member.image %}{{ member.image }}{% else %}{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/Portrait_Placeholder.png{% endif %}" alt="{{ member.name }}" class="w-full aspect-square object-cover rounded-lg mb-3 bg-gray-200">
+                    <p class="font-bold text-gray-900 text-sm">{{ member.name }}</p>
+                    {% if member.affiliation %}
+                    <p class="text-xs text-gray-500 mt-1">{{ member.affiliation }}</p>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% else %}
+        <div class="mb-16">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Past Members</h2>
+            <p class="text-gray-600 leading-relaxed">We're grateful to everyone who has contributed to this work over the years. This section will be updated with acknowledgments of past members who helped shape the workgroup.</p>
+        </div>
+        {% endif %}
+
+        <!-- Join Us -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Join Us</h2>
+            <p class="text-gray-600 leading-relaxed mb-4">Interested in becoming a member? We welcome people who can commit to:</p>
+            <ul class="space-y-3 mb-8">
+                <li class="flex items-start gap-3 text-gray-600">
+                    <i class="fa-solid fa-check text-pyblue mt-1 text-sm" aria-hidden="true"></i>
+                    <span>Attending monthly meetings (typically 1 hour)</span>
+                </li>
+                <li class="flex items-start gap-3 text-gray-600">
+                    <i class="fa-solid fa-check text-pyblue mt-1 text-sm" aria-hidden="true"></i>
+                    <span>Contributing to at least one active initiative</span>
+                </li>
+                <li class="flex items-start gap-3 text-gray-600">
+                    <i class="fa-solid fa-check text-pyblue mt-1 text-sm" aria-hidden="true"></i>
+                    <span>Maintaining 50%+ meeting attendance</span>
+                </li>
+            </ul>
+            <a href="#" class="inline-flex items-center px-6 py-2.5 text-sm font-bold text-white bg-pyblue rounded-lg hover:bg-pyblue-dark transition-colors shadow-md">
+                Apply to Join
+                <i class="fa-solid fa-arrow-right ml-2 text-xs" aria-hidden="true"></i>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,228 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} — {{ SITENAME }}{% endblock %}
+
+{% block extra_head %}
+<style>
+    .alternating-sections > section:nth-child(odd) {
+        background-color: #ffffff;
+    }
+    .alternating-sections > section:nth-child(even) {
+        background-color: #f9fafb;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero -->
+<section class="min-h-screen pt-16 flex items-center bg-gradient-to-br from-white via-blue-50/40 to-white" aria-labelledby="hero-heading">
+    <div class="max-w-6xl mx-auto px-6 py-8 w-full">
+        <div class="grid lg:grid-cols-2 gap-10 items-center">
+            <div>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pyblue/10 text-pyblue text-xs font-bold uppercase tracking-wider mb-5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-pyblue animate-pulse"></span>
+                    Python Software Foundation
+                </div>
+                <h1 id="hero-heading" class="text-4xl lg:text-5xl font-black leading-tight tracking-tight text-gray-900">
+                    {{ page.title }}
+                </h1>
+                <p class="mt-5 text-lg text-gray-600 leading-relaxed max-w-lg">
+                    {{ page.content | striptags }}
+                </p>
+                <div class="mt-7 flex flex-wrap gap-3">
+                    <a href="#initiatives" class="inline-flex items-center px-6 py-2.5 text-sm font-bold text-white bg-pyblue rounded-lg hover:bg-pyblue-dark transition-colors shadow-md">
+                        Explore Our Work
+                        <i class="fa-solid fa-arrow-right ml-2 text-xs" aria-hidden="true"></i>
+                    </a>
+                    <a href="#beliefs" class="inline-flex items-center px-6 py-2.5 text-sm font-semibold text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+            <div>
+                <div class="rounded-xl border border-gray-200 shadow-xl overflow-hidden bg-gray-50">
+                    <img src="https://z-cdn-media.chatglm.cn/files/cffc90aa-bc97-45b6-8a4d-d8871465d3aa.png?auth_key=1878075046-8a8d0a90f1c24a818dca6246d7e42d4b-0-a0cd9bf3667458fcb14e5cd5f7559d78"
+                        alt="Python Diversity Initiative community mapping interface"
+                        class="w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="alternating-sections">
+<!-- Beliefs -->
+<section id="beliefs" class="min-h-screen flex items-center" aria-labelledby="beliefs-heading">
+    <div class="max-w-6xl mx-auto px-6 py-8 w-full">
+        <div class="text-center mb-10">
+            <span class="text-xs font-bold uppercase tracking-widest text-pyblue mb-2 block">What We Believe</span>
+            <h2 id="beliefs-heading" class="text-3xl lg:text-4xl font-black tracking-tight text-gray-900">Three beliefs that drive every decision.</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+            {% for belief in BELIEFS %}
+            <article class="bg-gray-50 border border-gray-200 rounded-xl p-8 hover:border-pyblue/50 hover:shadow-lg transition-all duration-300">
+                <div class="w-14 h-14 rounded-xl bg-pyblue/10 flex items-center justify-center mb-5">
+                    <span class="text-pyblue font-black text-xl">0{{ loop.index }}</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">{{ belief.title }}</h3>
+                <p class="text-gray-600 leading-relaxed">{{ belief.description }}</p>
+            </article>
+            {% endfor %}
+        </div>
+
+        <p class="mt-10 text-center text-lg text-gray-700 font-medium max-w-2xl mx-auto">
+            {{ BELIEFS_FOOTER }}
+        </p>
+    </div>
+</section>
+
+<!-- Values -->
+<section class="min-h-screen flex items-center" aria-labelledby="values-heading">
+    <div class="max-w-6xl mx-auto px-6 py-8 w-full">
+        <div class="text-center mb-10">
+            <span class="text-xs font-bold uppercase tracking-widest text-pyblue mb-2 block">Core Values</span>
+            <h2 id="values-heading" class="text-3xl lg:text-4xl font-black tracking-tight text-gray-900">Our Values Guide Everything We Do</h2>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {% for value in VALUES %}
+            <article class="bg-white rounded-xl p-6 shadow-sm border-l-4 border-pyblue">
+                <h3 class="text-lg font-bold text-pyblue mb-2">{{ value.title }}</h3>
+                <p class="text-gray-600 leading-relaxed">{{ value.description }}</p>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Initiatives -->
+<section id="initiatives" class="min-h-screen flex items-center" aria-labelledby="initiatives-heading">
+    <div class="max-w-6xl mx-auto px-6 py-8 w-full">
+        <div class="text-center mb-10 max-w-2xl mx-auto">
+            <span class="text-xs font-bold uppercase tracking-widest text-pyblue mb-2 block">Our Work</span>
+            <h2 id="initiatives-heading" class="text-3xl lg:text-4xl font-black tracking-tight text-gray-900 mb-4">How We're Making a Difference</h2>
+            <p class="text-lg text-gray-600">We focus on three areas: understanding the global Python community, equipping organizers with the tools they need, and advocating for equitable policies within the PSF.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+            {% for item in WHAT_WE_DO %}
+            <a href="{{ item.link_url }}" class="group bg-gray-50 border border-gray-200 rounded-xl p-8 hover:border-pyblue/50 hover:shadow-xl transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-pyblue focus-visible:ring-offset-2" aria-label="{{ item.link_text }}">
+                <div class="w-10 h-10 rounded-lg bg-pyblue flex items-center justify-center mb-5 shadow-lg shadow-pyblue/30">
+                    <i class="fa-solid fa-arrow-up-right-from-square text-white text-sm" aria-hidden="true"></i>
+                </div>
+                <h3 class="text-xl font-bold text-pyblue mb-3">{{ item.headline }}</h3>
+                <p class="text-gray-600 leading-relaxed mb-4">{{ item.subheadline }}</p>
+                <span class="inline-flex items-center text-sm font-bold text-pyblue group-hover:text-pyblue-dark transition-colors">
+                    {{ item.link_text }}
+                    <i class="fa-solid fa-arrow-right ml-1.5 text-xs" aria-hidden="true"></i>
+                </span>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Impact -->
+<section class="min-h-screen flex items-center" aria-labelledby="impact-heading">
+    <div class="max-w-6xl mx-auto px-6 py-8 w-full">
+        <div class="text-center mb-10 max-w-2xl mx-auto">
+            <span class="text-xs font-bold uppercase tracking-widest text-pyblue mb-2 block">Impact</span>
+            <h2 id="impact-heading" class="text-3xl lg:text-4xl font-black tracking-tight text-gray-900 mb-4">What's Changed Because of This Work</h2>
+            <p class="text-lg text-gray-600">We don't just talk about inclusion—we measure it.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {% for item in IMPACT_ITEMS %}
+            <article class="bg-white rounded-xl p-6 shadow-sm">
+                <div class="w-10 h-10 rounded-lg bg-pyellow/30 flex items-center justify-center mb-3">
+                    <i class="fa-solid fa-chart-line text-gray-900 text-sm" aria-hidden="true"></i>
+                </div>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">{{ item.title }}</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">{{ item.description }}</p>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Team -->
+<section class="min-h-screen flex items-center" aria-labelledby="who-we-are-heading">
+    <div class="max-w-6xl mx-auto px-6 py-8 w-full">
+        <div class="text-center mb-10 max-w-3xl mx-auto">
+            <span class="text-xs font-bold uppercase tracking-widest text-pyblue mb-2 block">The Team</span>
+            <h2 id="who-we-are-heading" class="text-3xl lg:text-4xl font-black tracking-tight text-gray-900 mb-4">A Global Team, Working Together</h2>
+            <p class="text-lg text-gray-600">
+                The D&amp;I Workgroup is made up of 20+ volunteers from every inhabited continent—from Thailand to Germany, Nigeria to Brazil, China to Argentina, Kenya to Zimbabwe, India to Israel, and beyond.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6" role="list" aria-label="Workgroup leadership">
+            {% for member in LEADERSHIP_MEMBERS %}
+            <div class="bg-white rounded-xl p-6 shadow-sm text-center" role="listitem">
+                <img src="{% if member.image %}{{ member.image }}{% else %}{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/Portrait_Placeholder.png{% endif %}" alt="{{ member.name }}" class="w-full aspect-square object-cover rounded-lg mb-4 bg-gray-200">
+                <div class="text-xl font-bold text-gray-900">{{ member.name }}</div>
+                <div class="text-sm text-pyblue font-medium mt-1">{{ member.role }}</div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <p class="text-center mt-10">
+            <a href="members.html" class="inline-flex items-center text-sm font-bold text-pyblue hover:text-pyblue-dark transition-colors" aria-label="See all current workgroup members">
+                See all current members
+                <i class="fa-solid fa-arrow-right ml-1.5 text-xs" aria-hidden="true"></i>
+            </a>
+        </p>
+    </div>
+</section>
+
+<!-- Connect -->
+<section class="min-h-screen flex items-center" aria-labelledby="connect-heading">
+    <div class="max-w-6xl mx-auto px-6 py-8 w-full">
+        <div class="text-center mb-10 max-w-2xl mx-auto">
+            <span class="text-xs font-bold uppercase tracking-widest text-pyblue mb-2 block">Contact</span>
+            <h2 id="connect-heading" class="text-3xl lg:text-4xl font-black tracking-tight text-gray-900 mb-4">Let's Talk</h2>
+            <p class="text-lg text-gray-600">Have questions? Ideas? Feedback on how we can do better?<br>We'd love to hear from you.</p>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-6">
+            {% for item in CONNECT %}
+            <a href="{{ item.url }}" class="w-80 bg-gray-50 border border-gray-200 rounded-xl p-8 text-center hover:border-pyblue/50 hover:shadow-xl transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-pyblue focus-visible:ring-offset-2">
+                <div class="w-14 h-14 rounded-2xl bg-pyblue/10 flex items-center justify-center mx-auto mb-5">
+                    <i class="{{ item.icon }} text-pyblue text-xl" aria-hidden="true"></i>
+                </div>
+                <h3 class="text-sm font-bold text-gray-900 mb-1">{{ item.label }}</h3>
+                <span class="text-sm text-pyblue font-semibold">{{ item.value }}</span>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+</div>
+
+<!-- CTA -->
+<section class="min-h-screen flex items-center bg-pyblue relative overflow-hidden" aria-labelledby="cta-heading">
+    <div class="absolute inset-0 bg-gradient-to-br from-pyblue via-pyblue to-pyblue-dark"></div>
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-pyellow/10 rounded-full blur-[120px]"></div>
+    <div class="absolute bottom-0 left-0 w-[300px] h-[300px] bg-white/5 rounded-full blur-[80px]"></div>
+
+    <div class="relative max-w-3xl mx-auto px-6 text-center">
+        <h2 id="cta-heading" class="text-3xl lg:text-5xl font-black text-white tracking-tight mb-4">{{ FOOTER_CTA.headline }}</h2>
+        <p class="text-lg text-white/90 mb-10">{{ FOOTER_CTA.subheadline }}</p>
+        <div class="flex flex-wrap justify-center gap-4">
+            {% for btn in FOOTER_CTA.buttons %}
+            <a href="{{ btn.url }}" class="inline-flex items-center justify-center px-8 py-3.5 text-base font-bold rounded-xl transition-colors min-h-[3rem]
+                {% if btn.style == 'primary' %}
+                    bg-pyellow text-gray-900 hover:bg-pyellow-dark shadow-lg
+                {% else %}
+                    bg-white/10 text-white border border-white/30 hover:bg-white/20
+                {% endif %}">
+                {{ btn.text }}
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}
