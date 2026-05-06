@@ -20,3 +20,6 @@ Icon
 .VolumeIcon.icns
 .com.apple.timemachine.donotpresent
 output/
+__pycache__/
+*.pyc
+*.pyo
