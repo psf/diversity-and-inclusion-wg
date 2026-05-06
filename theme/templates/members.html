@@ -26,11 +26,7 @@
             <div class="grid md:grid-cols-3 gap-6">
                 {% for member in LEADERSHIP_MEMBERS %}
                 <div class="bg-gray-50 border border-gray-200 rounded-xl p-6 text-center">
-                    {% if member.image %}
-                    <img src="{{ member.image }}" alt="{{ member.name }}" class="w-full aspect-square object-cover rounded-lg mb-4 bg-gray-200">
-                    {% else %}
-                    <img src="{{ MEMBER_PLACEHOLDER.format(seed=member.slug) }}" alt="{{ member.name }}" class="w-full aspect-square object-cover rounded-lg mb-4 bg-gray-200">
-                    {% endif %}
+                    <img src="{% if member.image %}{{ member.image }}{% else %}{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/Portrait_Placeholder.png{% endif %}" alt="{{ member.name }}" class="w-full aspect-square object-cover rounded-lg mb-4 bg-gray-200">
                     <h3 class="text-lg font-bold text-gray-900">{{ member.name }}</h3>
                     <p class="text-sm text-pyblue font-medium mt-1">{{ member.role }}</p>
                     {% if member.affiliation %}
@@ -67,11 +63,7 @@
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     {% for member in members %}
                     <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center">
-                        {% if member.image %}
-                        <img src="{{ member.image }}" alt="{{ member.name }}" class="w-full aspect-square object-cover rounded-lg mb-3 bg-gray-200">
-                        {% else %}
-                        <img src="{{ MEMBER_PLACEHOLDER.format(seed=member.slug) }}" alt="{{ member.name }}" class="w-full aspect-square object-cover rounded-lg mb-3 bg-gray-200">
-                        {% endif %}
+                        <img src="{% if member.image %}{{ member.image }}{% else %}{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/Portrait_Placeholder.png{% endif %}" alt="{{ member.name }}" class="w-full aspect-square object-cover rounded-lg mb-3 bg-gray-200">
                         <p class="font-bold text-gray-900 text-sm">{{ member.name }}</p>
                         {% if member.affiliation %}
                         <p class="text-xs text-gray-500 mt-1">{{ member.affiliation }}</p>

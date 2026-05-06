@@ -187,9 +187,6 @@ for m in MEMBERS:
 
 PAST_MEMBERS = [m for m in MEMBERS if not m.get("active")]
 
-# Fallback placeholder image helper
-MEMBER_PLACEHOLDER = "https://picsum.photos/seed/{seed}/400/500"
-
 LEADERSHIP = {
     "chair": "Georgi Ker",
     "co_chair": "Nathan Bransby",
