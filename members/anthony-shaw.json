@@ -1,10 +1,11 @@
 {
-  "name": "Jimena Bermúdez",
-  "slug": "jimena-bermudez",
+  "name": "Anthony Shaw",
+  "slug": "anthony-shaw",
   "role": "",
-  "region": "Europe",
-  "active": true,
+  "region": "",
+  "active": false,
   "image": "",
+  "email": "",
   "affiliation": "",
   "socials": {
     "twitter": "",
@@ -13,6 +14,5 @@
     "website": "",
     "mastodon": ""
   },
-  "bio": "",
-  "email": ""
+  "bio": ""
 }
