@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.headline | default(page.title) }} | {{ SITENAME }}{% endblock %}
+
+{% block content %}
+
+<!-- Hero -->
+<section class="pt-32 pb-16 bg-gradient-to-br from-white via-blue-50/40 to-white" aria-labelledby="hero-heading">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+        <h1 id="hero-heading" class="text-4xl lg:text-5xl font-black leading-tight tracking-tight text-gray-900 mb-6">
+            {{ page.headline }}
+        </h1>
+        <p class="text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
+            {{ page.subheadline }}
+        </p>
+    </div>
+</section>
+
+<!-- Content -->
+<section class="py-12 bg-white" aria-label="Page content">
+    <div class="max-w-4xl mx-auto px-6">
+        {{ page.content }}
+    </div>
+</section>
+
+{% endblock %}
