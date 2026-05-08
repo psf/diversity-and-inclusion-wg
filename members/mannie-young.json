@@ -4,12 +4,12 @@
   "role": "",
   "region": "Africa",
   "active": true,
-  "image": "",
-  "affiliation": "",
+  "image": "/images/members/mannie-young.jpeg",
+  "affiliation": "Techpreneur | Software Engineer | Community Builder",
   "socials": {
-    "twitter": "",
-    "github": "",
-    "linkedin": "",
+    "twitter": "https://twitter.com/mawy_7",
+    "github": "https://github.com/mawy7",
+    "linkedin": "https://www.linkedin.com/in/mawy7/",
     "website": "",
     "mastodon": ""
   },
