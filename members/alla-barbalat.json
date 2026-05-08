@@ -4,13 +4,13 @@
   "role": "",
   "region": "North America",
   "active": true,
-  "image": "",
-  "affiliation": "",
+  "image": "images/members/alla-barbalat.jpeg",
+  "affiliation": "PyLadies SF Organizer | Former Lawyer",
   "socials": {
     "twitter": "",
-    "github": "",
-    "linkedin": "",
-    "website": "",
+    "github": "https://github.com/oakal510",
+    "linkedin": "https://www.linkedin.com/in/allabarbalat/",
+    "website": "https://allabarbalat.com/",
     "mastodon": ""
   },
   "bio": "",

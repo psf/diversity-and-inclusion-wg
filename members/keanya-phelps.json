@@ -4,15 +4,15 @@
   "role": "",
   "region": "North America",
   "active": true,
-  "image": "",
-  "affiliation": "",
+  "image": "/images/members/keanya-phelps.jpeg",
+  "affiliation": "DjangoCon US Chair 2025 & 2026",
   "socials": {
     "twitter": "",
-    "github": "",
-    "linkedin": "",
-    "website": "",
+    "github": "https://github.com/keanyaphelps",
+    "linkedin": "https://www.linkedin.com/in/keanyaphelps/",
+    "website": "https://keanyaphelps.com",
     "mastodon": ""
   },
   "bio": "",
-  "email": ""
+  "email": "keanya@keanyaphelps.com"
 }
