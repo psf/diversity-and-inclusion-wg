@@ -2,17 +2,17 @@
   "name": "Marie Nordin",
   "slug": "marie-nordin",
   "role": "PSF Staff Contact",
-  "region": "",
+  "region": "North America",
   "active": true,
-  "image": "",
+  "image": "/images/members/marie-nordin.jpeg",
   "affiliation": "Python Software Foundation",
   "socials": {
-    "twitter": "",
-    "github": "",
-    "linkedin": "",
+    "twitter": "https://x.com/rie_cat",
+    "github": "https://github.com/riecatnor",
+    "linkedin": "https://www.linkedin.com/in/mariecnordin/",
     "website": "",
-    "mastodon": ""
+    "mastodon": "https://fosstodon.org/@riecatnor"
   },
-  "bio": "",
-  "email": ""
+  "bio": "Marie is a community communications professional with over a decade of open source experience, having begun her journey as an Outreachy intern with the Fedora Project in 2013. She joined the Python Software Foundation in October 2023 as Community Communications Manager, bringing expertise in community architecture, program management, Code of Conduct, and graphic design.",
+  "email": "marie@python.org"
 }
