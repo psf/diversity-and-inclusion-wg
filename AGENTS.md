@@ -111,7 +111,7 @@ python -m http.server  # Serves from project root; index.html is the entry point
 - **Configuration language**: Python files (`pelicanconf.py`, `publishconf.py`) use standard Python conventions.
 - **Template language**: Jinja2 HTML templates use 4-space indentation.
 - **Data structures in config**: `BELIEFS`, `VALUES`, and `TEAM_MEMBERS` are plain Python lists and dicts defined in `pelicanconf.py`. They are injected into all templates.
-- **Images**: Templates currently reference external images (hero image from `z-cdn-media.chatglm.cn` and team avatars from `picsum.photos`). These are placeholders.
+- **Images**: Content images (member photos, hero images) live in `content/images/`. Theme assets (logo, placeholder) live in `theme/static/images/`.
 
 ---
 
@@ -152,7 +152,7 @@ You would typically:
 ## Known Issues & Observations
 
 1. **Missing theme CSS**: `theme/templates/base.html` links to `css/style.css`, but `theme/static/css/` is empty. The Pelican build produces pages with broken styling unless CSS is added.
-2. **Placeholder data**: `TEAM_MEMBERS` in `pelicanconf.py` uses placeholder names and `picsum.photos` avatars.
+2. **Placeholder data**: `MEMBERS` in `pelicanconf.py` is loaded from `members/*.json`. Some members may still use empty `image` fields and fall back to `Portrait_Placeholder.png`.
 3. **Placeholder URLs**: `publishconf.py` uses `example.com`; many footer/nav links are `#`.
 4. **Duplicate homepage template**: Both `home.html` and `index.html` exist in `theme/templates/`. `home.html` is data-driven;
 5. **`main.py`**: This file is a stub (`print("Hello from diversity-and-inclusion-wg!")`) and is not used by the site build.

@@ -109,9 +109,31 @@ Supported platforms: Twitter/X, GitHub, LinkedIn, personal website, Mastodon.
 
 ---
 
+## Image Organization
+
+We follow Pelican conventions for separating theme assets from content images:
+
+| Location | Purpose |
+|----------|---------|
+| `theme/static/images/` | Theme assets: logos, icons, placeholder images |
+| `content/images/` | Content images: member photos, hero images, page illustrations |
+
+### Content image directories
+
+```
+content/images/
+├── members/       # Member portraits
+├── hero/          # Hero / banner images
+└── pages/         # Page-specific illustrations
+```
+
+When adding a content image, place it in the appropriate subdirectory and reference it by its URL path (e.g., `/images/members/jane-doe.jpg`).
+
+---
+
 ## Member Images
 
-There are three ways to provide a member photo:
+There are four ways to provide a member photo:
 
 ### Option 1: Direct image URL
 
@@ -133,14 +155,28 @@ If the member has a Gravatar account, use their email hash:
 }
 ```
 
-# To use Gravatar, generate the MD5 hash of the email:
+To use Gravatar, generate the MD5 hash of the email:
+```bash
 echo -n "user@example.com" | md5sum
-# Then construct the URL yourself:
-# https://www.gravatar.com/avatar/YOUR_MD5_HASH?s=400d=identicon
+```
+Then construct the URL yourself:
+```
+https://www.gravatar.com/avatar/YOUR_MD5_HASH?s=400&d=identicon
+```
 
-### Option 3: Placeholder (default)
+### Option 3: Local image (recommended)
 
-Leave `"image": ""` empty. The site automatically generates a consistent placeholder using `picsum.photos` seeded with the member's slug.
+Save the image to `content/images/members/` and reference it by URL path:
+
+```json
+{
+  "image": "/images/members/firstname-lastname.jpg"
+}
+```
+
+### Option 4: Placeholder (default)
+
+Leave `"image": ""` empty. The site falls back to `Portrait_Placeholder.png`.
 
 ---
 
