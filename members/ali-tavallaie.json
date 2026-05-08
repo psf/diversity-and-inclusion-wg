@@ -5,14 +5,14 @@
   "region": "Middle East",
   "active": true,
   "image": "https://www.gravatar.com/avatar/bd36cf4202573c591ea984533f75cb7e?s=400&d=identicon",
-  "affiliation": "",
+  "affiliation": "AI Software Engineer | Open Source Maintainer",
   "socials": {
-    "twitter": "",
-    "github": "",
-    "linkedin": "",
-    "website": "",
+    "twitter": "https://x.com/AliTavallaie",
+    "github": "https://github.com/tavallaie",
+    "linkedin": "https://www.linkedin.com/in/tavallaie/",
+    "website": "https://techbend.dev/",
     "mastodon": ""
   },
   "bio": "",
-  "email": "a.tavallaie@gmail.com"
+  "email": "ali@techbend.dev"
 }

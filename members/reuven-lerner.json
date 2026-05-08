@@ -4,15 +4,15 @@
   "role": "",
   "region": "Middle East",
   "active": true,
-  "image": "",
+  "image": "/images/members/reuven-lerner.jpeg",
   "affiliation": "",
   "socials": {
     "twitter": "",
     "github": "",
-    "linkedin": "",
-    "website": "",
+    "linkedin": "https://www.linkedin.com/in/reuven/",
+    "website": "https://lerner.co.il/",
     "mastodon": ""
   },
   "bio": "",
-  "email": ""
+  "email": "reuven@lerner.co.il"
 }
