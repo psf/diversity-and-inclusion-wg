@@ -4,14 +4,14 @@
   "role": "Chair",
   "region": "Asia",
   "active": true,
-  "image": "",
-  "affiliation": "",
+  "image": "/images/members/georgi-ker.jpeg",
+  "affiliation": "Vice-Chair, Director & Fellow Member at PSF ",
   "socials": {
-    "twitter": "",
-    "github": "",
-    "linkedin": "",
-    "website": "",
-    "mastodon": ""
+    "twitter": "https://twitter.com/georgically1",
+    "github": "https://github.com/georgiker",
+    "linkedin": "https://www.linkedin.com/in/georgiker/",
+    "website": "https://georgiker.com/",
+    "mastodon": "georgically@fosstodon.org"
   },
   "bio": "",
   "email": ""
