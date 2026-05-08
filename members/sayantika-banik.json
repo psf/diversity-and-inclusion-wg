@@ -3,13 +3,13 @@
   "slug": "sayantika-banik",
   "role": "",
   "region": "Asia",
-  "active": true,
-  "image": "",
-  "affiliation": "",
+  "active": false,
+  "image": "/images/members/sayantika-banik.jpeg",
+  "affiliation": "Founder | Maintainer | Public Speaker | Open Source Advocate",
   "socials": {
     "twitter": "",
-    "github": "",
-    "linkedin": "",
+    "github": "https://github.com/sayantikabanik",
+    "linkedin": "https://www.linkedin.com/in/sayantika-banik/",
     "website": "",
     "mastodon": ""
   },
