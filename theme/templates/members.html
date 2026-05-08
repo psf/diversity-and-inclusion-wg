@@ -32,10 +32,16 @@
                     {% if member.affiliation %}
                     <p class="text-xs text-gray-500 mt-1">{{ member.affiliation }}</p>
                     {% endif %}
-                    {% if member.socials %}
+                    {% if member.socials or member.email %}
                     <div class="flex justify-center gap-3 mt-3">
+                        {% if member.email %}
+                        <a href="mailto:{{ member.email }}" class="text-gray-400 hover:text-pyblue transition-colors" aria-label="Email {{ member.name }}"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>
+                        {% endif %}
+                        {% if member.socials.mastodon %}
+                        <a href="{{ member.socials.mastodon }}" class="text-gray-400 hover:text-pyblue transition-colors" aria-label="{{ member.name }} on Mastodon"><i class="fa-brands fa-mastodon" aria-hidden="true"></i></a>
+                        {% endif %}
                         {% if member.socials.twitter %}
-                        <a href="{{ member.socials.twitter }}" class="text-gray-400 hover:text-pyblue transition-colors" aria-label="{{ member.name }} on Twitter"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+                        <a href="{{ member.socials.twitter }}" class="text-gray-400 hover:text-pyblue transition-colors" aria-label="{{ member.name }} on X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
                         {% endif %}
                         {% if member.socials.github %}
                         <a href="{{ member.socials.github }}" class="text-gray-400 hover:text-pyblue transition-colors" aria-label="{{ member.name }} on GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
@@ -68,10 +74,16 @@
                         {% if member.affiliation %}
                         <p class="text-xs text-gray-500 mt-1">{{ member.affiliation }}</p>
                         {% endif %}
-                        {% if member.socials %}
+                        {% if member.socials or member.email %}
                         <div class="flex justify-center gap-2 mt-2">
+                            {% if member.email %}
+                            <a href="mailto:{{ member.email }}" class="text-gray-400 hover:text-pyblue transition-colors text-xs" aria-label="Email {{ member.name }}"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>
+                            {% endif %}
+                            {% if member.socials.mastodon %}
+                            <a href="{{ member.socials.mastodon }}" class="text-gray-400 hover:text-pyblue transition-colors text-xs" aria-label="{{ member.name }} on Mastodon"><i class="fa-brands fa-mastodon" aria-hidden="true"></i></a>
+                            {% endif %}
                             {% if member.socials.twitter %}
-                            <a href="{{ member.socials.twitter }}" class="text-gray-400 hover:text-pyblue transition-colors text-xs" aria-label="{{ member.name }} on Twitter"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+                            <a href="{{ member.socials.twitter }}" class="text-gray-400 hover:text-pyblue transition-colors text-xs" aria-label="{{ member.name }} on X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
                             {% endif %}
                             {% if member.socials.github %}
                             <a href="{{ member.socials.github }}" class="text-gray-400 hover:text-pyblue transition-colors text-xs" aria-label="{{ member.name }} on GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
@@ -104,6 +116,28 @@
                     <p class="font-bold text-gray-900 text-sm">{{ member.name }}</p>
                     {% if member.affiliation %}
                     <p class="text-xs text-gray-500 mt-1">{{ member.affiliation }}</p>
+                    {% endif %}
+                    {% if member.socials or member.email %}
+                    <div class="flex justify-center gap-2 mt-2">
+                        {% if member.email %}
+                        <a href="mailto:{{ member.email }}" class="text-gray-400 hover:text-pyblue transition-colors text-xs" aria-label="Email {{ member.name }}"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>
+                        {% endif %}
+                        {% if member.socials.mastodon %}
+                        <a href="{{ member.socials.mastodon }}" class="text-gray-400 hover:text-pyblue transition-colors text-xs" aria-label="{{ member.name }} on Mastodon"><i class="fa-brands fa-mastodon" aria-hidden="true"></i></a>
+                        {% endif %}
+                        {% if member.socials.twitter %}
+                        <a href="{{ member.socials.twitter }}" class="text-gray-400 hover:text-pyblue transition-colors text-xs" aria-label="{{ member.name }} on X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+                        {% endif %}
+                        {% if member.socials.github %}
+                        <a href="{{ member.socials.github }}" class="text-gray-400 hover:text-pyblue transition-colors text-xs" aria-label="{{ member.name }} on GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+                        {% endif %}
+                        {% if member.socials.linkedin %}
+                        <a href="{{ member.socials.linkedin }}" class="text-gray-400 hover:text-pyblue transition-colors text-xs" aria-label="{{ member.name }} on LinkedIn"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
+                        {% endif %}
+                        {% if member.socials.website %}
+                        <a href="{{ member.socials.website }}" class="text-gray-400 hover:text-pyblue transition-colors text-xs" aria-label="{{ member.name }}'s website"><i class="fa-solid fa-globe" aria-hidden="true"></i></a>
+                        {% endif %}
+                    </div>
                     {% endif %}
                 </div>
                 {% endfor %}

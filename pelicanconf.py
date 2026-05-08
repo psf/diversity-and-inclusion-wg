@@ -179,9 +179,10 @@ LEADERSHIP_MEMBERS = [m for m in MEMBERS if m.get("role")]
 # Group active members by region
 MEMBERS_BY_REGION = {}
 for m in MEMBERS:
-    if m.get("active") and not m.get("role"):
-        region = m.get("region") or "Other"
-        MEMBERS_BY_REGION.setdefault(region, []).append(m)
+    if m.get("active"):
+        region = m.get("region")
+        if region:
+            MEMBERS_BY_REGION.setdefault(region, []).append(m)
 
 PAST_MEMBERS = [m for m in MEMBERS if not m.get("active")]
 
