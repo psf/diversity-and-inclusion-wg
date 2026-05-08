@@ -1,18 +1,18 @@
 {
   "name": "Nathan Bransby",
   "slug": "nathan-bransby",
-  "role": "Co-Chair",
+  "role": "Vice Chair",
   "region": "Oceania",
   "active": true,
-  "image": "",
-  "affiliation": "",
+  "image": "https://avatars.githubusercontent.com/u/141193650?v=4",
+  "affiliation": "Full-Stack Software Engineer | Community Leader | Conference Director",
   "socials": {
     "twitter": "",
-    "github": "",
-    "linkedin": "",
-    "website": "",
-    "mastodon": ""
+    "github": "https://github.com/Nathan-Bransby-NMT",
+    "linkedin": "https://www.linkedin.com/in/nathan-bransby/",
+    "website": "https://linktr.ee/brnsb",
+    "mastodon": "https://mastodon.social/@brnsb"
   },
   "bio": "",
-  "email": ""
+  "email": "open-source@nlb-software.dev"
 }
