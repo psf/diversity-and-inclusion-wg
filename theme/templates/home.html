@@ -173,10 +173,12 @@
 
         <div class="grid md:grid-cols-3 gap-6" role="list" aria-label="Workgroup leadership">
             {% for member in LEADERSHIP_MEMBERS %}
-            <div class="bg-white rounded-xl p-6 shadow-sm text-center" role="listitem">
+            <div class="bg-white rounded-xl p-6 shadow-sm text-center h-full flex flex-col" role="listitem">
                 <img src="{% if member.image %}{% if member.image.startswith('http') %}{{ member.image }}{% else %}{{ SITEURL }}{{ member.image }}{% endif %}{% else %}{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/Portrait_Placeholder.png{% endif %}" alt="{{ member.name }}" class="w-full aspect-square object-cover rounded-lg mb-4 bg-gray-200">
-                <div class="text-xl font-bold text-gray-900">{{ member.name }}</div>
-                <div class="text-sm text-pyblue font-medium mt-1">{{ member.role }}</div>
+                <div class="flex-grow">
+                    <div class="text-xl font-bold text-gray-900">{{ member.name }}</div>
+                    <div class="text-sm text-pyblue font-medium mt-1">{{ member.role }}</div>
+                </div>
             </div>
             {% endfor %}
         </div>
