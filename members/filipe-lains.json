@@ -4,15 +4,15 @@
   "role": "",
   "region": "Europe",
   "active": true,
-  "image": "",
-  "affiliation": "",
+  "image": "/images/members/filipe-lains.jpeg",
+  "affiliation": "Python Core Dev | Archlinux Packager ",
   "socials": {
-    "twitter": "",
-    "github": "",
+    "twitter": "https://twitter.com/MissingClara",
+    "github": "https://github.com/FFY00",
     "linkedin": "",
-    "website": "",
-    "mastodon": ""
+    "website": "https://ffy00.github.io/",
+    "mastodon": "https://chaos.social/@MissingClara"
   },
   "bio": "",
-  "email": ""
+  "email": "lains@riseup.net"
 }

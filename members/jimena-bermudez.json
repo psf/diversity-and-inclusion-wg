@@ -4,15 +4,15 @@
   "role": "",
   "region": "Europe",
   "active": true,
-  "image": "",
-  "affiliation": "",
+  "image": "https://avatars.githubusercontent.com/u/4335179?v=4",
+  "affiliation": "President of Python Spain 2022 - 2024| Senior Full Stack Developer | Mentor & Speaker | DEI",
   "socials": {
-    "twitter": "",
-    "github": "",
-    "linkedin": "",
-    "website": "",
+    "twitter": "https://x.com/Jimena_y_yo",
+    "github": "https://github.com/JimenaEB",
+    "linkedin": "https://www.linkedin.com/in/jimena-eb/",
+    "website": "https://www.getmanfred.com/perfil/jimena",
     "mastodon": ""
   },
   "bio": "",
-  "email": ""
+  "email": "jimena_eb@es.python.org"
 }

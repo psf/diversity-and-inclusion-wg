@@ -1,0 +1,18 @@
+{
+  "name": "Julio Batista Silva",
+  "slug": "julio-batista-silva",
+  "role": "",
+  "region": "Europe",
+  "active": true,
+  "image": "/images/members/julio-batista-silva.jpeg",
+  "affiliation": "Data engineer | Open Source Contributor",
+  "socials": {
+    "twitter": "https://x.com/6jj",
+    "github": "https://github.com/jbsilva",
+    "linkedin": "https://www.linkedin.com/in/juliobs",
+    "website": "https://juliobs.com/",
+    "mastodon": "https://mastodon.social/@juliobs"
+  },
+  "bio": "",
+  "email": "contact@juliobs.com"
+}
