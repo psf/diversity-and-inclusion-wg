@@ -4,15 +4,15 @@
   "role": "",
   "region": "South America",
   "active": true,
-  "image": "",
-  "affiliation": "",
+  "image": "/images/members/karo-ladino.jpeg",
+  "affiliation": "Product Manager | Community Leader | Robotics Engineer | Data Analysis MSc | Maker & Jeweler",
   "socials": {
-    "twitter": "",
-    "github": "",
-    "linkedin": "",
-    "website": "",
+    "twitter": "https://twitter.com/karobotco",
+    "github": "https://github.com/karobotco",
+    "linkedin": "https://www.linkedin.com/in/karobotco/",
+    "website": "https://karobot.co/",
     "mastodon": ""
   },
   "bio": "",
-  "email": ""
+  "email": "hello@karobot.co"
 }

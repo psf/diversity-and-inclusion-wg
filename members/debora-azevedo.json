@@ -4,15 +4,15 @@
   "role": "",
   "region": "South America",
   "active": true,
-  "image": "",
-  "affiliation": "",
+  "image": "https://avatars.githubusercontent.com/u/5026063?v=4",
+  "affiliation": "pyladies-brazil & PyLadiesNatal cofounder | pyladies contributer | psf former board member",
   "socials": {
-    "twitter": "",
-    "github": "",
-    "linkedin": "",
-    "website": "",
+    "twitter": "https://x.com/pydebb",
+    "github": "https://github.com/deboraazevedo",
+    "linkedin": "https://www.linkedin.com/in/debora-azevedo-1919b996/",
+    "website": "https://deboraazevedo.github.io/",
     "mastodon": ""
   },
-  "bio": "",
-  "email": ""
+  "bio": "Débora Azevedo is a Python developer and open source enthusiast from Brazil. She has been involved in the Python community for several years, contributing to various projects and organizing local meetups. Débora is passionate about promoting diversity and inclusion in tech, and she actively works to create welcoming spaces for underrepresented groups in the Python community.",
+  "email": "deboraazevedoo@gmail.com"
 }

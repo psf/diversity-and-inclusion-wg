@@ -4,12 +4,12 @@
   "role": "",
   "region": "South America",
   "active": true,
-  "image": "",
-  "affiliation": "",
+  "image": "/images/members/juliana-barros-lima.jpeg",
+  "affiliation": "Fullstack Software Engineer | DevRel | Backend Developer | Tech Instructor | Mobile Developer",
   "socials": {
     "twitter": "",
-    "github": "",
-    "linkedin": "",
+    "github": "https://github.com/tiidadavena",
+    "linkedin": "https://www.linkedin.com/in/julianabarroslima/",
     "website": "",
     "mastodon": ""
   },
