@@ -4,15 +4,15 @@
   "role": "",
   "region": "North America",
   "active": true,
-  "image": "",
-  "affiliation": "Senior/Lead Backend & Data Engineer ",
+  "image": "/images/members/abhijeet-mote.jpg",
+  "affiliation": "Lead Python AI & Data Engineer ",
   "socials": {
-    "twitter": "",
+    "twitter": "https://x.com/abhijeet_mote",
     "github": "",
     "linkedin": "https://www.linkedin.com/in/abhijeet-mote/",
     "website": "",
     "mastodon": ""
   },
-  "bio": "",
-  "email": ""
+  "bio": "Author and IT professional who enjoys technology, learning new things, and connecting with people in the community.",
+  "email": "abhijeetmote@gmail.com"
 }
