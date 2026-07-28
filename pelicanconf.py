@@ -201,8 +201,8 @@ CONNECT = [
     },
     {
         "label": "Discord",
-        "value": "#diversity-and-inclusion",
-        "url": "#",
+        "value": "#psf-diversity",
+        "url": "https://discord.gg/g8ekCh9yTf",
         "icon": "fa-brands fa-discord",
     },
     {
