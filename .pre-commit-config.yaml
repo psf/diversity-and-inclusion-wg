@@ -55,6 +55,13 @@ repos:
     hooks:
       - id: actionlint
 
+  # actionlint only shellchecks `run:` steps inside workflow YAML; standalone scripts (e.g.
+  # scripts/install-tailwindcss.sh) need their own check.
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.11.0.1
+    hooks:
+      - id: shellcheck
+
   # Renovate config validator. Catches a typo in renovate.json5 before it silently breaks updates.
   - repo: https://github.com/renovatebot/pre-commit-hooks
     rev: 44.24.0
