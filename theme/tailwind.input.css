@@ -1,0 +1,11 @@
+@import "tailwindcss" source(none);
+@source "./templates";
+
+@theme {
+  --color-pyblue: #3776ab;
+  --color-pyblue-dark: #2d5f8a;
+  --color-pyblue-light: #4a8bc2;
+  --color-pyellow: #ffd43b;
+  --color-pyellow-dark: #e6c035;
+  --font-sans: Inter, system-ui, sans-serif;
+}

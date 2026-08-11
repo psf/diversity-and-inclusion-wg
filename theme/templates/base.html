@@ -12,24 +12,8 @@
 
     <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/fontawesome/css/all.min.css">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        pyblue: { DEFAULT: '#3776AB', dark: '#2d5f8a', light: '#4a8bc2' },
-                        pyellow: { DEFAULT: '#FFD43B', dark: '#e6c035' },
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-
     <link rel="icon" type="image/x-icon" href="https://www.python.org/static/favicon.ico">
+    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/tailwind.css">
     <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/style.css">
     {% block extra_head %}{% endblock %}
 </head>

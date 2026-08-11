@@ -1,15 +1,23 @@
-.PHONY: help build serve publish clean lint format precommit
+.PHONY: help build serve publish clean css lint format precommit
+
+TAILWIND_BIN := .bin/tailwindcss
 
 help:
-	@echo "Targets: build, serve, publish, clean, lint, format, precommit"
+	@echo "Targets: build, serve, publish, clean, css, lint, format, precommit"
 
-build:
+$(TAILWIND_BIN):
+	./scripts/install-tailwindcss.sh
+
+css: $(TAILWIND_BIN)
+	$(TAILWIND_BIN) -i theme/tailwind.input.css -o theme/static/css/tailwind.css --minify
+
+build: css
 	uv run pelican content -o output -s pelicanconf.py
 
-serve:
+serve: css
 	uv run pelican --autoreload --listen content -o output -s pelicanconf.py
 
-publish:
+publish: css
 	uv run pelican content -o output -s publishconf.py
 
 clean:
