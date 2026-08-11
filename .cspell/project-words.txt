@@ -90,6 +90,7 @@ Sayantika
 seyram
 Seyram
 shellcheck
+shellchecks
 SITENAME
 SITEURL
 subheadline
