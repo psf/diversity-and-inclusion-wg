@@ -15,8 +15,6 @@ The site is currently hosted on **GitHub Pages** at:
 
 1. **Work-in-progress migration**: A [Pelican](https://getpelican.com/) static site generator setup (`pelicanconf.py`, `publishconf.py`, `content/`, `theme/`) that is partially configured but not yet integrated into the deployment pipeline. The `output/` directory is empty and no build automation exists.
 
-The theme is a paid licensed theme from https://shock-html.codings.dev/.
-
 ---
 
 ## Technology Stack
