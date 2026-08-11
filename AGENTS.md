@@ -1,18 +1,21 @@
 # Agent Guide: diversity-and-inclusion-wg
 
-> This file is intended for AI coding agents working on this project.
-> The reader of this file is expected to know nothing about the project.
+> This file is intended for AI coding agents working on this project. The reader of this file is
+> expected to know nothing about the project.
 
 ______________________________________________________________________
 
 ## Project Overview
 
-This repository contains the website for the **Python Software Foundation's Diversity & Inclusion Workgroup**.
+This repository contains the website for the **Python Software Foundation's Diversity & Inclusion
+Workgroup**.
 
-The site is currently hosted on **GitHub Pages** at:
-`https://diversity.python.org`
+The site is currently hosted on **GitHub Pages** at: `https://diversity.python.org`
 
-1. **Work-in-progress migration**: A [Pelican](https://getpelican.com/) static site generator setup (`pelicanconf.py`, `publishconf.py`, `content/`, `theme/`) that is partially configured but not yet integrated into the deployment pipeline. The `output/` directory is empty and no build automation exists.
+1. **Work-in-progress migration**: A [Pelican](https://getpelican.com/) static site generator setup
+   (`pelicanconf.py`, `publishconf.py`, `content/`, `theme/`) that is partially configured but not
+   yet integrated into the deployment pipeline. The `output/` directory is empty and no build
+   automation exists.
 
 ______________________________________________________________________
 
@@ -64,11 +67,20 @@ ______________________________________________________________________
 
 ### Key Files Explained
 
-- **`pelicanconf.py`**: Defines site metadata (`SITENAME`, `AUTHOR`, `THEME = "theme"`), content paths (`PAGE_PATHS = ["pages"]`), and large data structures (`BELIEFS`, `VALUES`, `TEAM_MEMBERS`) that feed the Jinja2 templates. Feeds are disabled for development.
-- **`publishconf.py`**: Imports everything from `pelicanconf.py`, sets a production `SITEURL`, enables Atom feeds, and sets `DELETE_OUTPUT_DIRECTORY = True`. **Note**: The `SITEURL` currently points to a placeholder domain (`diversity-and-inclusion-wg.example.com`).
-- **`content/pages/index.md`**: The sole Markdown content file. Uses Pelican metadata (`Title`, `Slug`, `URL`, `Save_as`, `Template: home`) to render as the homepage.
-- **`theme/templates/base.html`**: Custom Tailwind navbar, skip-to-content link, semantic landmarks (`<header>`, `<nav>`, `<main>`, `<footer>`), ARIA labels, and responsive mobile menu. Links the locally-compiled `css/tailwind.css` and self-hosted `fontawesome/css/all.min.css`.
-- **`theme/templates/home.html`**: Data-driven homepage with custom Tailwind components. Dark/light alternating sections, gradient accents, and accessibility-compliant markup with proper heading hierarchy and ARIA attributes.
+- **`pelicanconf.py`**: Defines site metadata (`SITENAME`, `AUTHOR`, `THEME = "theme"`), content
+  paths (`PAGE_PATHS = ["pages"]`), and large data structures (`BELIEFS`, `VALUES`, `TEAM_MEMBERS`)
+  that feed the Jinja2 templates. Feeds are disabled for development.
+- **`publishconf.py`**: Imports everything from `pelicanconf.py`, sets a production `SITEURL`,
+  enables Atom feeds, and sets `DELETE_OUTPUT_DIRECTORY = True`. **Note**: The `SITEURL` currently
+  points to a placeholder domain (`diversity-and-inclusion-wg.example.com`).
+- **`content/pages/index.md`**: The sole Markdown content file. Uses Pelican metadata (`Title`,
+  `Slug`, `URL`, `Save_as`, `Template: home`) to render as the homepage.
+- **`theme/templates/base.html`**: Custom Tailwind navbar, skip-to-content link, semantic landmarks
+  (`<header>`, `<nav>`, `<main>`, `<footer>`), ARIA labels, and responsive mobile menu. Links the
+  locally-compiled `css/tailwind.css` and self-hosted `fontawesome/css/all.min.css`.
+- **`theme/templates/home.html`**: Data-driven homepage with custom Tailwind components. Dark/light
+  alternating sections, gradient accents, and accessibility-compliant markup with proper heading
+  hierarchy and ARIA attributes.
 
 ______________________________________________________________________
 
@@ -101,7 +113,8 @@ pelican --autoreload --listen content
 
 ### Viewing the Current Deployment
 
-Because the active site is the standalone `index.html` at the repository root, the README suggests this for local preview:
+Because the active site is the standalone `index.html` at the repository root, the README suggests
+this for local preview:
 
 ```bash
 python -m http.server  # Serves from project root; index.html is the entry point
@@ -111,16 +124,22 @@ ______________________________________________________________________
 
 ## Code Style Guidelines
 
-- **Configuration language**: Python files (`pelicanconf.py`, `publishconf.py`) use standard Python conventions.
+- **Configuration language**: Python files (`pelicanconf.py`, `publishconf.py`) use standard Python
+  conventions.
 - **Template language**: Jinja2 HTML templates use 4-space indentation.
-- **Data structures in config**: `BELIEFS`, `VALUES`, and `TEAM_MEMBERS` are plain Python lists and dicts defined in `pelicanconf.py`. They are injected into all templates.
-- **Images**: Content images (member photos, hero images) live in `content/images/`. Theme assets (logo, placeholder) live in `theme/static/images/`.
+- **Data structures in config**: `BELIEFS`, `VALUES`, and `TEAM_MEMBERS` are plain Python lists and
+  dicts defined in `pelicanconf.py`. They are injected into all templates.
+- **Images**: Content images (member photos, hero images) live in `content/images/`. Theme assets
+  (logo, placeholder) live in `theme/static/images/`.
 
 ______________________________________________________________________
 
 ## Writing Style
 
-Default to American English spelling (`cspell` is configured for `en`), but clarity matters more than dialect, similar to the [CPython Developer's Guide style guide](https://devguide.python.org/documentation/style-guide/). Many readers of this site are not native English speakers.
+Default to American English spelling (`cspell` is configured for `en`), but clarity matters more
+than dialect, similar to the
+[CPython Developer's Guide style guide](https://devguide.python.org/documentation/style-guide/).
+Many readers of this site are not native English speakers.
 
 - Write short, direct sentences. Avoid compound or deeply nested clauses.
 - Avoid idioms, sports metaphors, and other culturally specific references that don't translate.
@@ -140,43 +159,68 @@ ______________________________________________________________________
 
 ## Development Workflow
 
-- **CSS build**: `make css` downloads the pinned, checksum-verified [Tailwind standalone CLI](https://github.com/tailwindlabs/tailwindcss/releases) into `.bin/` (via `scripts/install-tailwindcss.sh`) and compiles `theme/tailwind.input.css` to `theme/static/css/tailwind.css`. `build`/`serve`/`publish` depend on it. Neither the CLI binary nor the compiled CSS is committed.
-- **Linting/formatting**: [Ruff](https://docs.astral.sh/ruff/), configured in `pyproject.toml`. Run via `make lint` / `make format`, or `uv run ruff check .` / `uv run ruff format .`.
-- **Pre-commit hooks**: `.pre-commit-config.yaml` runs Ruff, mdformat, [cspell](https://cspell.org/) (American English), actionlint, and basic hygiene hooks (trailing whitespace, YAML/TOML/JSON validity, `uv lock` sync), executed via [`prek`](https://github.com/j178/prek) (a Rust reimplementation of `pre-commit`, compatible with the same config). Install once with `uv tool install prek && prek install`; run on demand with `make precommit`.
-- **Spell checking**: cspell is configured in `.cspell.json` (`language: en`) with project-specific words (names, identifiers) in `.cspell/project-words.txt`. Runs on changed files and on the commit message.
-- **CI**: `.github/workflows/ci.yml` runs Ruff lint/format checks and a Pelican production build on every push and pull request.
-- **Security scanning**: `.github/workflows/codeql.yml` runs CodeQL (Python + GitHub Actions) on pushes, pull requests, and a weekly schedule.
-- **Dependency updates**: [Renovate](https://docs.renovatebot.com/) is configured in `renovate.json5` to open PRs for Python dependencies, GitHub Actions, and pre-commit hook revisions.
+- **CSS build**: `make css` downloads the pinned, checksum-verified
+  [Tailwind standalone CLI](https://github.com/tailwindlabs/tailwindcss/releases) into `.bin/` (via
+  `scripts/install-tailwindcss.sh`) and compiles `theme/tailwind.input.css` to
+  `theme/static/css/tailwind.css`. `build`/`serve`/`publish` depend on it. Neither the CLI binary
+  nor the compiled CSS is committed.
+- **Linting/formatting**: [Ruff](https://docs.astral.sh/ruff/), configured in `pyproject.toml`. Run
+  via `make lint` / `make format`, or `uv run ruff check .` / `uv run ruff format .`.
+- **Pre-commit hooks**: `.pre-commit-config.yaml` runs Ruff, mdformat, [cspell](https://cspell.org/)
+  (American English), actionlint, and basic hygiene hooks (trailing whitespace, YAML/TOML/JSON
+  validity, `uv lock` sync), executed via [`prek`](https://github.com/j178/prek) (a Rust
+  reimplementation of `pre-commit`, compatible with the same config). Install once with
+  `uv tool install prek && prek install`; run on demand with `make precommit`.
+- **Spell checking**: cspell is configured in `.cspell.json` (`language: en`) with project-specific
+  words (names, identifiers) in `.cspell/project-words.txt`. Runs on changed files and on the commit
+  message.
+- **CI**: `.github/workflows/ci.yml` runs Ruff lint/format checks and a Pelican production build on
+  every push and pull request.
+- **Security scanning**: `.github/workflows/codeql.yml` runs CodeQL (Python + GitHub Actions) on
+  pushes, pull requests, and a weekly schedule.
+- **Dependency updates**: [Renovate](https://docs.renovatebot.com/) is configured in
+  `renovate.json5` to open PRs for Python dependencies, GitHub Actions, and pre-commit hook
+  revisions.
 
 ## Deployment
 
-- **Platform**: GitHub Pages, serving the `gh-pages` branch, behind the `diversity.python.org` custom domain.
-- **Mechanism**: `.github/workflows/deploy.yml` builds the Pelican site with `publishconf.py` and pushes `output/` to the `gh-pages` branch on every push to `main`.
+- **Platform**: GitHub Pages, serving the `gh-pages` branch, behind the `diversity.python.org`
+  custom domain.
+- **Mechanism**: `.github/workflows/deploy.yml` builds the Pelican site with `publishconf.py` and
+  pushes `output/` to the `gh-pages` branch on every push to `main`.
 
 ### To deploy Pelican-generated output manually
 
 You would typically:
 
 1. Run `uv run pelican content -o output -s publishconf.py`
-1. Copy the contents of `output/` to the branch or directory configured for GitHub Pages.
+2. Copy the contents of `output/` to the branch or directory configured for GitHub Pages.
 
 ______________________________________________________________________
 
 ## Security Considerations
 
-- The `.gitignore` file ignores macOS system files, the `output/` build directory, `.venv/`, Python caches, and Ruff/uv caches.
+- The `.gitignore` file ignores macOS system files, the `output/` build directory, `.venv/`, Python
+  caches, and Ruff/uv caches.
 - No secrets, API keys, or credentials are present in the repository.
-- GitHub Actions in `.github/workflows/` are pinned to full commit SHAs (with the version in a trailing comment); Renovate keeps them current.
+- GitHub Actions in `.github/workflows/` are pinned to full commit SHAs (with the version in a
+  trailing comment); Renovate keeps them current.
 - The project is licensed under Apache-2.0 (`LICENSE`).
 - Several navigation and social links in the templates are set to `#` placeholders.
-- Templates still load Google Fonts (Inter) from a CDN. Tailwind CSS and Font Awesome are compiled/vendored locally (`make css`, `theme/static/fontawesome/`), not loaded from a CDN.
+- Templates still load Google Fonts (Inter) from a CDN. Tailwind CSS and Font Awesome are
+  compiled/vendored locally (`make css`, `theme/static/fontawesome/`), not loaded from a CDN.
 
 ______________________________________________________________________
 
 ## Known Issues & Observations
 
-1. **Missing theme CSS**: `theme/templates/base.html` links to `css/style.css`, but `theme/static/css/` is empty. The Pelican build produces pages with broken styling unless CSS is added.
-1. **Placeholder data**: `MEMBERS` in `pelicanconf.py` is loaded from `members/*.json`. Some members may still use empty `image` fields and fall back to `Portrait_Placeholder.png`.
-1. **Placeholder URLs**: `publishconf.py` uses `example.com`; many footer/nav links are `#`.
-1. **Duplicate homepage template**: Both `home.html` and `index.html` exist in `theme/templates/`. `home.html` is data-driven;
-1. **`main.py`**: This file is a stub (`print("Hello from diversity-and-inclusion-wg!")`) and is not used by the site build.
+1. **Missing theme CSS**: `theme/templates/base.html` links to `css/style.css`, but
+   `theme/static/css/` is empty. The Pelican build produces pages with broken styling unless CSS is
+   added.
+2. **Placeholder data**: `MEMBERS` in `pelicanconf.py` is loaded from `members/*.json`. Some members
+   may still use empty `image` fields and fall back to `Portrait_Placeholder.png`.
+3. **Placeholder URLs**: `publishconf.py` uses `example.com`; many footer/nav links are `#`.
+4. **Duplicate homepage template**: Both `home.html` and `index.html` exist in `theme/templates/`.
+   `home.html` is data-driven;
+5. **`main.py`**: This file is a stub (`print("Hello from diversity-and-inclusion-wg!")`) and is not
+   used by the site build.
