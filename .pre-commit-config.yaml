@@ -30,3 +30,9 @@ repos:
         additional_dependencies:
           - mdformat-gfm # GitHub Flavored Markdown support
           - mdformat-frontmatter # Don't mess with Pelican's metadata header on content pages
+
+  # Lints GitHub Actions workflow YAML (shellcheck on run: steps, unpinned actions, etc.).
+  - repo: https://github.com/rhysd/actionlint
+    rev: v1.7.12
+    hooks:
+      - id: actionlint
