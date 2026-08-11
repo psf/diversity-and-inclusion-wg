@@ -29,14 +29,23 @@ jobs:
         with:
           python-version-file: "pyproject.toml"
 
-      - name: Install dev dependencies
-        run: uv sync --locked --group dev
+      - name: Cache prek hook environments
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ~/.cache/prek
+          key: prek-${{ hashFiles('.pre-commit-config.yaml') }}
+          # Falls back to a stale cache (e.g. Renovate bumping one hook rev) so only the
+          # changed hook's environment needs to be rebuilt, not all of them.
+          restore-keys: prek-
 
-      - name: ruff check
-        run: uv run --locked ruff check --output-format=github .
+      - name: Install prek
+        run: uv tool install prek
 
-      - name: ruff format
-        run: uv run --locked ruff format --check .
+      # Runs every hook from .pre-commit-config.yaml (ruff, mdformat, cspell, actionlint,
+      # renovate-config-validator, basic hygiene checks). Contributors who haven't run
+      # `prek install` locally still get the same checks here.
+      - name: Run pre-commit hooks
+        run: prek run --all-files
 
   build:
     runs-on: ubuntu-latest
