@@ -14,3 +14,8 @@ dependencies = [
 [project.urls]
 Homepage = "https://diversity.python.org"
 Repository = "https://github.com/psf/diversity-and-inclusion-wg"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.14.5",
+]
