@@ -19,3 +19,11 @@ Repository = "https://github.com/psf/diversity-and-inclusion-wg"
 dev = [
     "ruff>=0.14.5",
 ]
+
+[tool.uv]
+# No importable package here (pelicanconf.py / theme / content), just a uv-managed
+# environment for the Pelican build tooling.
+package = false
+# Guards against supply-chain attacks that publish a malicious release and get it
+# installed within hours.
+exclude-newer = "1 day"
