@@ -29,3 +29,7 @@ __pycache__/
 # uv / ruff / prek caches
 .ruff_cache/
 .cache/
+
+# Downloaded Tailwind CSS standalone CLI (scripts/install-tailwindcss.sh) and its compiled output
+.bin/
+theme/static/css/tailwind.css
