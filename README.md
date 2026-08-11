@@ -12,14 +12,14 @@ ______________________________________________________________________
 
 ## Technology Stack
 
-| Component             | Technology                           |
-| --------------------- | ------------------------------------ |
-| Static Site Generator | [Pelican](https://getpelican.com/)   |
-| Package Manager       | [uv](https://docs.astral.sh/uv/)     |
-| Templating            | Jinja2                               |
-| CSS Framework         | Tailwind CSS (CDN)                   |
-| Icons                 | Font Awesome 6.4.0                   |
-| Linting/Formatting    | [Ruff](https://docs.astral.sh/ruff/) |
+| Component             | Technology                                      |
+| --------------------- | ----------------------------------------------- |
+| Static Site Generator | [Pelican](https://getpelican.com/)              |
+| Package Manager       | [uv](https://docs.astral.sh/uv/)                |
+| Templating            | Jinja2                                          |
+| CSS Framework         | Tailwind CSS (compiled locally, see `make css`) |
+| Icons                 | Font Awesome 6.7.2 (self-hosted)                |
+| Linting/Formatting    | [Ruff](https://docs.astral.sh/ruff/)            |
 
 ______________________________________________________________________
 
@@ -35,10 +35,10 @@ source .venv/bin/activate
 ### Build the site
 
 ```bash
-pelican content
+make build
 ```
 
-This generates the site into the `output/` directory.
+This compiles `theme/tailwind.input.css` to `theme/static/css/tailwind.css` (downloading the pinned Tailwind CLI into `.bin/` on first run) and generates the site into the `output/` directory. Running `pelican content` directly skips the CSS build, so pages will be unstyled unless `make css` has already been run.
 
 ### Preview locally
 
@@ -51,7 +51,8 @@ Then open http://localhost:8000.
 ### Auto-reload during development
 
 ```bash
-pelican --autoreload --listen content
+make css
+uv run pelican --autoreload --listen content
 ```
 
 ______________________________________________________________________

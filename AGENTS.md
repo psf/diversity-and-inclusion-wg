@@ -18,22 +18,22 @@ ______________________________________________________________________
 
 ## Technology Stack
 
-| Component              | Technology           | Version                               |
-| ---------------------- | -------------------- | ------------------------------------- |
-| Language               | Python               | >= 3.14                               |
-| Package Manager        | `uv`                 | (lockfile: `uv.lock`)                 |
-| Static Site Generator  | Pelican              | >= 4.12.0                             |
-| Markdown Parser        | Python-Markdown      | >= 3.10.2                             |
-| Templating             | Jinja2               | (via Pelican)                         |
-| Frontend CSS Framework | Tailwind CSS         | CDN                                   |
-| Frontend Components    | Custom components    | Tailwind utilities                    |
-| Frontend Fonts         | Google Fonts (Inter) | —                                     |
-| Frontend Icons         | Font Awesome 6.4.0   | CDN                                   |
-| Linter/Formatter       | Ruff                 | (config in `pyproject.toml`)          |
-| Local checks           | `prek`               | (config in `.pre-commit-config.yaml`) |
-| Dependency updates     | Renovate             | (config in `renovate.json5`)          |
-| CI                     | GitHub Actions       | `.github/workflows/ci.yml`            |
-| Security scanning      | CodeQL               | `.github/workflows/codeql.yml`        |
+| Component              | Technology           | Version                                          |
+| ---------------------- | -------------------- | ------------------------------------------------ |
+| Language               | Python               | >= 3.14                                          |
+| Package Manager        | `uv`                 | (lockfile: `uv.lock`)                            |
+| Static Site Generator  | Pelican              | >= 4.12.0                                        |
+| Markdown Parser        | Python-Markdown      | >= 3.10.2                                        |
+| Templating             | Jinja2               | (via Pelican)                                    |
+| Frontend CSS Framework | Tailwind CSS         | compiled via standalone CLI (`make css`)         |
+| Frontend Components    | Custom components    | Tailwind utilities                               |
+| Frontend Fonts         | Google Fonts (Inter) | CDN                                              |
+| Frontend Icons         | Font Awesome         | 6.7.2 (self-hosted, `theme/static/fontawesome/`) |
+| Linter/Formatter       | Ruff                 | (config in `pyproject.toml`)                     |
+| Local checks           | `prek`               | (config in `.pre-commit-config.yaml`)            |
+| Dependency updates     | Renovate             | (config in `renovate.json5`)                     |
+| CI                     | GitHub Actions       | `.github/workflows/ci.yml`                       |
+| Security scanning      | CodeQL               | `.github/workflows/codeql.yml`                   |
 
 ______________________________________________________________________
 
@@ -48,7 +48,7 @@ ______________________________________________________________________
 │   ├── static/
 │   │   └── css/              # EMPTY — no stylesheet exists here yet
 │   └── templates/
-│       ├── base.html         # Base Jinja2 layout (header, footer, font/icon CDNs)
+│       ├── base.html         # Base Jinja2 layout (header, footer, Google Fonts CDN)
 │       ├── home.html         # Homepage template (uses BELIEFS, VALUES, TEAM_MEMBERS)
 │       ├── index.html        # Hardcoded static version of homepage (Jinja2 syntax but inline values)
 │       └── page.html         # Generic page template
@@ -66,7 +66,7 @@ ______________________________________________________________________
 - **`pelicanconf.py`**: Defines site metadata (`SITENAME`, `AUTHOR`, `THEME = "theme"`), content paths (`PAGE_PATHS = ["pages"]`), and large data structures (`BELIEFS`, `VALUES`, `TEAM_MEMBERS`) that feed the Jinja2 templates. Feeds are disabled for development.
 - **`publishconf.py`**: Imports everything from `pelicanconf.py`, sets a production `SITEURL`, enables Atom feeds, and sets `DELETE_OUTPUT_DIRECTORY = True`. **Note**: The `SITEURL` currently points to a placeholder domain (`diversity-and-inclusion-wg.example.com`).
 - **`content/pages/index.md`**: The sole Markdown content file. Uses Pelican metadata (`Title`, `Slug`, `URL`, `Save_as`, `Template: home`) to render as the homepage.
-- **`theme/templates/base.html`**: Custom Tailwind navbar, skip-to-content link, semantic landmarks (`<header>`, `<nav>`, `<main>`, `<footer>`), ARIA labels, and responsive mobile menu. Loads Tailwind CSS from CDN.
+- **`theme/templates/base.html`**: Custom Tailwind navbar, skip-to-content link, semantic landmarks (`<header>`, `<nav>`, `<main>`, `<footer>`), ARIA labels, and responsive mobile menu. Links the locally-compiled `css/tailwind.css` and self-hosted `fontawesome/css/all.min.css`.
 - **`theme/templates/home.html`**: Data-driven homepage with custom Tailwind components. Dark/light alternating sections, gradient accents, and accessibility-compliant markup with proper heading hierarchy and ARIA attributes.
 
 ______________________________________________________________________
@@ -129,6 +129,7 @@ ______________________________________________________________________
 
 ## Development Workflow
 
+- **CSS build**: `make css` downloads the pinned, checksum-verified [Tailwind standalone CLI](https://github.com/tailwindlabs/tailwindcss/releases) into `.bin/` (via `scripts/install-tailwindcss.sh`) and compiles `theme/tailwind.input.css` to `theme/static/css/tailwind.css`. `build`/`serve`/`publish` depend on it. Neither the CLI binary nor the compiled CSS is committed.
 - **Linting/formatting**: [Ruff](https://docs.astral.sh/ruff/), configured in `pyproject.toml`. Run via `make lint` / `make format`, or `uv run ruff check .` / `uv run ruff format .`.
 - **Pre-commit hooks**: `.pre-commit-config.yaml` runs Ruff, mdformat, actionlint, and basic hygiene hooks (trailing whitespace, YAML/TOML/JSON validity, `uv lock` sync), executed via [`prek`](https://github.com/j178/prek) (a Rust reimplementation of `pre-commit`, compatible with the same config). Install once with `uv tool install prek && prek install`; run on demand with `make precommit`.
 - **CI**: `.github/workflows/ci.yml` runs Ruff lint/format checks and a Pelican production build on every push and pull request.
@@ -156,7 +157,7 @@ ______________________________________________________________________
 - GitHub Actions in `.github/workflows/` are pinned to full commit SHAs (with the version in a trailing comment); Renovate keeps them current.
 - The project is licensed under Apache-2.0 (`LICENSE`).
 - Several navigation and social links in the templates are set to `#` placeholders.
-- The standalone `index.html` and templates load external resources from CDNs (Font Awesome, Google Fonts). Ensure these are acceptable for the project's content security policy if one is introduced.
+- Templates still load Google Fonts (Inter) from a CDN. Tailwind CSS and Font Awesome are compiled/vendored locally (`make css`, `theme/static/fontawesome/`), not loaded from a CDN.
 
 ______________________________________________________________________
 
