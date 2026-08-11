@@ -118,6 +118,16 @@ ______________________________________________________________________
 
 ______________________________________________________________________
 
+## Writing Style
+
+Default to American English spelling (`cspell` is configured for `en`), but clarity matters more than dialect, similar to the [CPython Developer's Guide style guide](https://devguide.python.org/documentation/style-guide/). Many readers of this site are not native English speakers.
+
+- Write short, direct sentences. Avoid compound or deeply nested clauses.
+- Avoid idioms, sports metaphors, and other culturally specific references that don't translate.
+- Spell out acronyms on first use (for example, "Python Software Foundation (PSF)").
+
+______________________________________________________________________
+
 ## Testing Instructions
 
 **There are no tests in this project.**

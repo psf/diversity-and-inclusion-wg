@@ -79,6 +79,8 @@ Every push and pull request runs the same lint checks plus a production build in
 
 If cspell flags a real name or project-specific term as unknown, add it to `.cspell/project-words.txt` (one word per line) rather than disabling the check.
 
+When writing content for the site, default to American English spelling, but favor clarity over dialect: short sentences, no idioms or culturally specific references, acronyms spelled out on first use. Many readers are not native English speakers. See [`AGENTS.md`](AGENTS.md#writing-style) for details.
+
 ______________________________________________________________________
 
 ## Adding or Updating Members
