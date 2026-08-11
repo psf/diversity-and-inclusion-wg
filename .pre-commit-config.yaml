@@ -22,3 +22,11 @@ repos:
       - id: ruff-check
         args: [--fix]
       - id: ruff-format
+
+  - repo: https://github.com/hukkin/mdformat
+    rev: 1.0.0
+    hooks:
+      - id: mdformat
+        additional_dependencies:
+          - mdformat-gfm # GitHub Flavored Markdown support
+          - mdformat-frontmatter # Don't mess with Pelican's metadata header on content pages
