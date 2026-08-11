@@ -3,7 +3,7 @@
 > This file is intended for AI coding agents working on this project.
 > The reader of this file is expected to know nothing about the project.
 
----
+______________________________________________________________________
 
 ## Project Overview
 
@@ -12,31 +12,30 @@ This repository contains the website for the **Python Software Foundation's Dive
 The site is currently hosted on **GitHub Pages** at:
 `https://diversity.python.org`
 
-
 1. **Work-in-progress migration**: A [Pelican](https://getpelican.com/) static site generator setup (`pelicanconf.py`, `publishconf.py`, `content/`, `theme/`) that is partially configured but not yet integrated into the deployment pipeline. The `output/` directory is empty and no build automation exists.
 
----
+______________________________________________________________________
 
 ## Technology Stack
 
-| Component | Technology | Version |
-|-----------|------------|---------|
-| Language | Python | >= 3.14 |
-| Package Manager | `uv` | (lockfile: `uv.lock`) |
-| Static Site Generator | Pelican | >= 4.12.0 |
-| Markdown Parser | Python-Markdown | >= 3.10.2 |
-| Templating | Jinja2 | (via Pelican) |
-| Frontend CSS Framework | Tailwind CSS | CDN |
-| Frontend Components | Custom components | Tailwind utilities |
-| Frontend Fonts | Google Fonts (Inter) | — |
-| Frontend Icons | Font Awesome 6.4.0 | CDN |
-| Linter/Formatter | Ruff | (config in `pyproject.toml`) |
-| Local checks | `prek` | (config in `.pre-commit-config.yaml`) |
-| Dependency updates | Renovate | (config in `renovate.json5`) |
-| CI | GitHub Actions | `.github/workflows/ci.yml` |
-| Security scanning | CodeQL | `.github/workflows/codeql.yml` |
+| Component              | Technology           | Version                               |
+| ---------------------- | -------------------- | ------------------------------------- |
+| Language               | Python               | >= 3.14                               |
+| Package Manager        | `uv`                 | (lockfile: `uv.lock`)                 |
+| Static Site Generator  | Pelican              | >= 4.12.0                             |
+| Markdown Parser        | Python-Markdown      | >= 3.10.2                             |
+| Templating             | Jinja2               | (via Pelican)                         |
+| Frontend CSS Framework | Tailwind CSS         | CDN                                   |
+| Frontend Components    | Custom components    | Tailwind utilities                    |
+| Frontend Fonts         | Google Fonts (Inter) | —                                     |
+| Frontend Icons         | Font Awesome 6.4.0   | CDN                                   |
+| Linter/Formatter       | Ruff                 | (config in `pyproject.toml`)          |
+| Local checks           | `prek`               | (config in `.pre-commit-config.yaml`) |
+| Dependency updates     | Renovate             | (config in `renovate.json5`)          |
+| CI                     | GitHub Actions       | `.github/workflows/ci.yml`            |
+| Security scanning      | CodeQL               | `.github/workflows/codeql.yml`        |
 
----
+______________________________________________________________________
 
 ## Project Structure
 
@@ -70,7 +69,7 @@ The site is currently hosted on **GitHub Pages** at:
 - **`theme/templates/base.html`**: Custom Tailwind navbar, skip-to-content link, semantic landmarks (`<header>`, `<nav>`, `<main>`, `<footer>`), ARIA labels, and responsive mobile menu. Loads Tailwind CSS from CDN.
 - **`theme/templates/home.html`**: Data-driven homepage with custom Tailwind components. Dark/light alternating sections, gradient accents, and accessibility-compliant markup with proper heading hierarchy and ARIA attributes.
 
----
+______________________________________________________________________
 
 ## Build and Development Commands
 
@@ -107,7 +106,7 @@ Because the active site is the standalone `index.html` at the repository root, t
 python -m http.server  # Serves from project root; index.html is the entry point
 ```
 
----
+______________________________________________________________________
 
 ## Code Style Guidelines
 
@@ -116,7 +115,7 @@ python -m http.server  # Serves from project root; index.html is the entry point
 - **Data structures in config**: `BELIEFS`, `VALUES`, and `TEAM_MEMBERS` are plain Python lists and dicts defined in `pelicanconf.py`. They are injected into all templates.
 - **Images**: Content images (member photos, hero images) live in `content/images/`. Theme assets (logo, placeholder) live in `theme/static/images/`.
 
----
+______________________________________________________________________
 
 ## Testing Instructions
 
@@ -126,7 +125,7 @@ No test runner configuration, no test files, and no testing dependencies exist.
 
 If you add tests, the project uses Python >= 3.14 and `uv`. A reasonable choice would be `pytest`.
 
----
+______________________________________________________________________
 
 ## Development Workflow
 
@@ -144,10 +143,11 @@ If you add tests, the project uses Python >= 3.14 and `uv`. A reasonable choice 
 ### To deploy Pelican-generated output manually
 
 You would typically:
-1. Run `uv run pelican content -o output -s publishconf.py`
-2. Copy the contents of `output/` to the branch or directory configured for GitHub Pages.
 
----
+1. Run `uv run pelican content -o output -s publishconf.py`
+1. Copy the contents of `output/` to the branch or directory configured for GitHub Pages.
+
+______________________________________________________________________
 
 ## Security Considerations
 
@@ -158,12 +158,12 @@ You would typically:
 - Several navigation and social links in the templates are set to `#` placeholders.
 - The standalone `index.html` and templates load external resources from CDNs (Font Awesome, Google Fonts). Ensure these are acceptable for the project's content security policy if one is introduced.
 
----
+______________________________________________________________________
 
 ## Known Issues & Observations
 
 1. **Missing theme CSS**: `theme/templates/base.html` links to `css/style.css`, but `theme/static/css/` is empty. The Pelican build produces pages with broken styling unless CSS is added.
-2. **Placeholder data**: `MEMBERS` in `pelicanconf.py` is loaded from `members/*.json`. Some members may still use empty `image` fields and fall back to `Portrait_Placeholder.png`.
-3. **Placeholder URLs**: `publishconf.py` uses `example.com`; many footer/nav links are `#`.
-4. **Duplicate homepage template**: Both `home.html` and `index.html` exist in `theme/templates/`. `home.html` is data-driven;
-5. **`main.py`**: This file is a stub (`print("Hello from diversity-and-inclusion-wg!")`) and is not used by the site build.
+1. **Placeholder data**: `MEMBERS` in `pelicanconf.py` is loaded from `members/*.json`. Some members may still use empty `image` fields and fall back to `Portrait_Placeholder.png`.
+1. **Placeholder URLs**: `publishconf.py` uses `example.com`; many footer/nav links are `#`.
+1. **Duplicate homepage template**: Both `home.html` and `index.html` exist in `theme/templates/`. `home.html` is data-driven;
+1. **`main.py`**: This file is a stub (`print("Hello from diversity-and-inclusion-wg!")`) and is not used by the site build.
