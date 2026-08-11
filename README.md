@@ -8,20 +8,20 @@
 
 ✨ This website welcomes pull requests from anyone in the community.
 
----
+______________________________________________________________________
 
 ## Technology Stack
 
-| Component | Technology |
-|-----------|------------|
-| Static Site Generator | [Pelican](https://getpelican.com/) |
-| Package Manager | [uv](https://docs.astral.sh/uv/) |
-| Templating | Jinja2 |
-| CSS Framework | Tailwind CSS (CDN) |
-| Icons | Font Awesome 6.4.0 |
-| Linting/Formatting | [Ruff](https://docs.astral.sh/ruff/) |
+| Component             | Technology                           |
+| --------------------- | ------------------------------------ |
+| Static Site Generator | [Pelican](https://getpelican.com/)   |
+| Package Manager       | [uv](https://docs.astral.sh/uv/)     |
+| Templating            | Jinja2                               |
+| CSS Framework         | Tailwind CSS (CDN)                   |
+| Icons                 | Font Awesome 6.4.0                   |
+| Linting/Formatting    | [Ruff](https://docs.astral.sh/ruff/) |
 
----
+______________________________________________________________________
 
 ## Local Development
 
@@ -54,7 +54,7 @@ Then open http://localhost:8000.
 pelican --autoreload --listen content
 ```
 
----
+______________________________________________________________________
 
 ## Contributing
 
@@ -76,7 +76,7 @@ make precommit  # run all pre-commit hooks against the whole repo
 
 Every push and pull request runs the same lint checks plus a production build in CI (`.github/workflows/ci.yml`).
 
----
+______________________________________________________________________
 
 ## Adding or Updating Members
 
@@ -108,17 +108,17 @@ Create a new file at `members/{firstname-lastname}.json`:
 
 ### Field reference
 
-| Field | Description | Example |
-|-------|-------------|---------|
-| `name` | Full name | `"Ada Lovelace"` |
-| `slug` | URL-friendly identifier | `"ada-lovelace"` |
-| `role` | Leadership role (leave empty for regular members) | `"Chair"`, `"Co-Chair"`, `"PSF Staff Contact"` |
-| `region` | Geographic region | `"Asia"`, `"Europe"`, `"Africa"`, `"North America"`, `"South America"`, `"Oceania"`, `"Middle East"` |
-| `active` | `true` for current members, `false` for past members | `true` |
-| `image` | URL to member photo (see below) | `"https://..."` |
-| `affiliation` | Company, organization, or university | `"PSF"` |
-| `socials` | Object with social media URLs | See example above |
-| `bio` | Optional short biography | `"Pythonista since 2010..."` |
+| Field         | Description                                          | Example                                                                                              |
+| ------------- | ---------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `name`        | Full name                                            | `"Ada Lovelace"`                                                                                     |
+| `slug`        | URL-friendly identifier                              | `"ada-lovelace"`                                                                                     |
+| `role`        | Leadership role (leave empty for regular members)    | `"Chair"`, `"Co-Chair"`, `"PSF Staff Contact"`                                                       |
+| `region`      | Geographic region                                    | `"Asia"`, `"Europe"`, `"Africa"`, `"North America"`, `"South America"`, `"Oceania"`, `"Middle East"` |
+| `active`      | `true` for current members, `false` for past members | `true`                                                                                               |
+| `image`       | URL to member photo (see below)                      | `"https://..."`                                                                                      |
+| `affiliation` | Company, organization, or university                 | `"PSF"`                                                                                              |
+| `socials`     | Object with social media URLs                        | See example above                                                                                    |
+| `bio`         | Optional short biography                             | `"Pythonista since 2010..."`                                                                         |
 
 ### Moving a member to "Past Members"
 
@@ -130,16 +130,16 @@ Only include links that exist. Empty strings (`""`) are ignored automatically.
 
 Supported platforms: Twitter/X, GitHub, LinkedIn, personal website, Mastodon.
 
----
+______________________________________________________________________
 
 ## Image Organization
 
 We follow Pelican conventions for separating theme assets from content images:
 
-| Location | Purpose |
-|----------|---------|
-| `theme/static/images/` | Theme assets: logos, icons, placeholder images |
-| `content/images/` | Content images: member photos, hero images, page illustrations |
+| Location               | Purpose                                                        |
+| ---------------------- | -------------------------------------------------------------- |
+| `theme/static/images/` | Theme assets: logos, icons, placeholder images                 |
+| `content/images/`      | Content images: member photos, hero images, page illustrations |
 
 ### Content image directories
 
@@ -152,7 +152,7 @@ content/images/
 
 When adding a content image, place it in the appropriate subdirectory and reference it by its URL path (e.g., `/images/members/jane-doe.jpg`).
 
----
+______________________________________________________________________
 
 ## Member Images
 
@@ -179,10 +179,13 @@ If the member has a Gravatar account, use their email hash:
 ```
 
 To use Gravatar, generate the MD5 hash of the email:
+
 ```bash
 echo -n "user@example.com" | md5sum
 ```
+
 Then construct the URL yourself:
+
 ```
 https://www.gravatar.com/avatar/YOUR_MD5_HASH?s=400&d=identicon
 ```
@@ -201,7 +204,7 @@ Save the image to `content/images/members/` and reference it by URL path:
 
 Leave `"image": ""` empty. The site falls back to `Portrait_Placeholder.png`.
 
----
+______________________________________________________________________
 
 ## Adding Pages
 
@@ -225,7 +228,7 @@ Your content here. You can use Markdown or embed HTML with Tailwind classes.
 
 Update `pelicanconf.py` or add a link in templates to point to `my-page.html`.
 
----
+______________________________________________________________________
 
 ## Project Structure
 
@@ -243,18 +246,17 @@ Update `pelicanconf.py` or add a link in templates to point to `my-page.html`.
 └── README.md            # This file
 ```
 
----
+______________________________________________________________________
 
 ## Deployment
 
 The site is deployed to GitHub Pages. To deploy:
 
 1. Build: `pelican content -s publishconf.py`
-2. Push the `output/` contents to the GitHub Pages branch.
+1. Push the `output/` contents to the GitHub Pages branch.
 
----
+______________________________________________________________________
 
 ## Questions?
 
 Ask for help in the Diversity and Inclusion workgroup - Python Software Foundation Slack (thepsf.slack.com) in the `#/diversity-and-inclusion` channel.
-
