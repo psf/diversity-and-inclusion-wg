@@ -3,7 +3,7 @@ name = "diversity-and-inclusion-wg"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.14"
 dependencies = [
     "markdown>=3.10.2",
     "pelican>=4.12.0",
