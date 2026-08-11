@@ -163,8 +163,9 @@ ______________________________________________________________________
 - **Spell checking**: cspell is configured in `.cspell.json` (`language: en`) with project-specific
   words (names, identifiers) in `.cspell/project-words.txt`. Runs on changed files and on the commit
   message.
-- **CI**: `.github/workflows/ci.yml` runs Ruff lint/format checks and a Pelican production build on
-  every push and pull request.
+- **CI**: `.github/workflows/ci.yml` runs every hook in `.pre-commit-config.yaml` (not just Ruff —
+  this is what catches issues in PRs from contributors who haven't run `prek install`) and a Pelican
+  production build, on every push and pull request.
 - **Security scanning**: `.github/workflows/codeql.yml` runs CodeQL (Python + GitHub Actions) on
   pushes, pull requests, and a weekly schedule.
 - **Dependency updates**: [Renovate](https://docs.renovatebot.com/) is configured in

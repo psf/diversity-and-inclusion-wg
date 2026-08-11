@@ -81,8 +81,9 @@ make format     # ruff check --fix + ruff format
 make precommit  # run all pre-commit hooks against the whole repo
 ```
 
-Every push and pull request runs the same lint checks plus a production build in CI
-(`.github/workflows/ci.yml`).
+Every push and pull request runs the same pre-commit hooks (equivalent to `make precommit`) plus a
+production build in CI (`.github/workflows/ci.yml`), so forgetting to install the git hooks locally
+doesn't let anything through.
 
 If cspell flags a real name or project-specific term as unknown, add it to
 `.cspell/project-words.txt` (one word per line) rather than disabling the check.
