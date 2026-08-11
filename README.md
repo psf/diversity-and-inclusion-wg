@@ -59,7 +59,7 @@ ______________________________________________________________________
 
 ## Contributing
 
-Install the dev tools and enable the git hooks (Ruff lint/format, mdformat, actionlint, and basic file hygiene checks), run via [`prek`](https://github.com/j178/prek), a fast `pre-commit`-compatible hook runner:
+Install the dev tools and enable the git hooks (Ruff lint/format, mdformat, [cspell](https://cspell.org/) spell checking, actionlint, and basic file hygiene checks), run via [`prek`](https://github.com/j178/prek), a fast `pre-commit`-compatible hook runner:
 
 ```bash
 uv sync --group dev
@@ -76,6 +76,8 @@ make precommit  # run all pre-commit hooks against the whole repo
 ```
 
 Every push and pull request runs the same lint checks plus a production build in CI (`.github/workflows/ci.yml`).
+
+If cspell flags a real name or project-specific term as unknown, add it to `.cspell/project-words.txt` (one word per line) rather than disabling the check.
 
 ______________________________________________________________________
 
