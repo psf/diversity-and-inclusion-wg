@@ -12,10 +12,10 @@ Workgroup**.
 
 The site is currently hosted on **GitHub Pages** at: `https://diversity.python.org`
 
-1. **Work-in-progress migration**: A [Pelican](https://getpelican.com/) static site generator setup
-   (`pelicanconf.py`, `publishconf.py`, `content/`, `theme/`) that is partially configured but not
-   yet integrated into the deployment pipeline. The `output/` directory is empty and no build
-   automation exists.
+It is built with [Pelican](https://getpelican.com/) (`pelicanconf.py` for development,
+`publishconf.py` for production) from Markdown pages in `content/pages/` and Jinja2 templates in
+`theme/templates/`. `.github/workflows/deploy.yml` builds and deploys it automatically on every push
+to `main`.
 
 ______________________________________________________________________
 
@@ -46,35 +46,36 @@ ______________________________________________________________________
 ```
 .
 ├── content/
-│   └── pages/
-│       └── index.md          # Only content source (Markdown with Pelican metadata)
+│   └── pages/                # Markdown page sources (Pelican metadata fenced with ---)
+├── members/                  # One JSON file per member (see "Adding or Updating Members" in README.md)
 ├── theme/
 │   ├── static/
-│   │   └── css/              # EMPTY — no stylesheet exists here yet
+│   │   ├── css/style.css     # Hand-written accessibility overrides (committed)
+│   │   ├── css/tailwind.css  # Compiled by `make css`; not committed
+│   │   └── fontawesome/      # Self-hosted Font Awesome Free
+│   ├── tailwind.input.css    # Tailwind source (see "Development Workflow" below)
 │   └── templates/
 │       ├── base.html         # Base Jinja2 layout (header, footer, Google Fonts CDN)
-│       ├── home.html         # Homepage template (uses BELIEFS, VALUES, TEAM_MEMBERS)
-│       ├── index.html        # Hardcoded static version of homepage (Jinja2 syntax but inline values)
+│       ├── home.html         # Homepage template (uses BELIEFS, VALUES, LEADERSHIP_MEMBERS)
+│       ├── index.html        # Unused: an older hardcoded homepage, not extended by anything
 │       └── page.html         # Generic page template
-├── output/                   # Pelican build output (currently empty)
 ├── pelicanconf.py            # Pelican development configuration
 ├── publishconf.py            # Pelican production configuration
 ├── pyproject.toml            # Python project metadata and dependencies
 ├── uv.lock                   # uv lockfile for reproducible installs
-├── main.py                   # Stub script (not connected to the site build)
 └── README.md                 # Human-readable project description
 ```
 
 ### Key Files Explained
 
 - **`pelicanconf.py`**: Defines site metadata (`SITENAME`, `AUTHOR`, `THEME = "theme"`), content
-  paths (`PAGE_PATHS = ["pages"]`), and large data structures (`BELIEFS`, `VALUES`, `TEAM_MEMBERS`)
-  that feed the Jinja2 templates. Feeds are disabled for development.
-- **`publishconf.py`**: Imports everything from `pelicanconf.py`, sets a production `SITEURL`,
-  enables Atom feeds, and sets `DELETE_OUTPUT_DIRECTORY = True`. **Note**: The `SITEURL` currently
-  points to a placeholder domain (`diversity-and-inclusion-wg.example.com`).
-- **`content/pages/index.md`**: The sole Markdown content file. Uses Pelican metadata (`Title`,
-  `Slug`, `URL`, `Save_as`, `Template: home`) to render as the homepage.
+  paths (`PAGE_PATHS = ["pages"]`), and large data structures (`BELIEFS`, `VALUES`, `MEMBERS`, and
+  others) that feed the Jinja2 templates. Feeds are disabled for development.
+- **`publishconf.py`**: Imports everything from `pelicanconf.py`, sets the production `SITEURL`
+  (`https://diversity.python.org`), enables Atom feeds, and sets `DELETE_OUTPUT_DIRECTORY = True`.
+- **`content/pages/index.md`**: Renders as the homepage. Uses Pelican metadata (`Title`, `Slug`,
+  `URL`, `Save_as`, `Template: home`); the other files in `content/pages/` are the site's other
+  pages (charter, initiatives, members).
 - **`theme/templates/base.html`**: Custom Tailwind navbar, skip-to-content link, semantic landmarks
   (`<header>`, `<nav>`, `<main>`, `<footer>`), ARIA labels, and responsive mobile menu. Links the
   locally-compiled `css/tailwind.css` and self-hosted `fontawesome/css/all.min.css`.
@@ -98,26 +99,14 @@ uv sync
 source .venv/bin/activate
 ```
 
-### Running the Pelican Site (Work-in-Progress)
+### Running the Pelican Site
+
+`pelican content` alone skips the Tailwind CSS build (see "CSS build" under Development Workflow
+below), so pages render unstyled unless `make css` has already been run. Prefer the `make` targets:
 
 ```bash
-# Generate the site into output/
-pelican content
-
-# Serve the output directory locally
-python -m http.server -d output 8000
-
-# Or use Pelican's built-in development server with auto-reload
-pelican --autoreload --listen content
-```
-
-### Viewing the Current Deployment
-
-Because the active site is the standalone `index.html` at the repository root, the README suggests
-this for local preview:
-
-```bash
-python -m http.server  # Serves from project root; index.html is the entry point
+make build   # make css, then generate the site into output/
+make serve   # make css, then serve with auto-reload at http://localhost:8000
 ```
 
 ______________________________________________________________________
@@ -127,8 +116,8 @@ ______________________________________________________________________
 - **Configuration language**: Python files (`pelicanconf.py`, `publishconf.py`) use standard Python
   conventions.
 - **Template language**: Jinja2 HTML templates use 4-space indentation.
-- **Data structures in config**: `BELIEFS`, `VALUES`, and `TEAM_MEMBERS` are plain Python lists and
-  dicts defined in `pelicanconf.py`. They are injected into all templates.
+- **Data structures in config**: `BELIEFS`, `VALUES`, `MEMBERS`, and others are plain Python lists
+  and dicts defined in `pelicanconf.py`. They are injected into all templates.
 - **Images**: Content images (member photos, hero images) live in `content/images/`. Theme assets
   (logo, placeholder) live in `theme/static/images/`.
 
@@ -193,7 +182,8 @@ ______________________________________________________________________
 
 You would typically:
 
-1. Run `uv run pelican content -o output -s publishconf.py`
+1. Run `make publish` (builds the Tailwind CSS, then runs
+   `pelican content -o output -s publishconf.py`).
 2. Copy the contents of `output/` to the branch or directory configured for GitHub Pages.
 
 ______________________________________________________________________
@@ -214,13 +204,12 @@ ______________________________________________________________________
 
 ## Known Issues & Observations
 
-1. **Missing theme CSS**: `theme/templates/base.html` links to `css/style.css`, but
-   `theme/static/css/` is empty. The Pelican build produces pages with broken styling unless CSS is
-   added.
-2. **Placeholder data**: `MEMBERS` in `pelicanconf.py` is loaded from `members/*.json`. Some members
-   may still use empty `image` fields and fall back to `Portrait_Placeholder.png`.
-3. **Placeholder URLs**: `publishconf.py` uses `example.com`; many footer/nav links are `#`.
-4. **Duplicate homepage template**: Both `home.html` and `index.html` exist in `theme/templates/`.
-   `home.html` is data-driven;
-5. **`main.py`**: This file is a stub (`print("Hello from diversity-and-inclusion-wg!")`) and is not
-   used by the site build.
+1. **Placeholder member photos**: some `members/*.json` files have an empty `image` field and fall
+   back to `Portrait_Placeholder.png`.
+2. **Placeholder links**: several footer/nav links in the templates are still `#`.
+3. **Unused template**: `theme/templates/index.html` is an older hardcoded homepage. Nothing extends
+   or references it; `home.html` is the one actually rendered for `content/pages/index.md`. It could
+   be deleted, but that is a content decision, not something fixed here.
+4. **Leadership data lives in two places**: `pelicanconf.py`'s `LEADERSHIP` dict (chair, co-chair,
+   staff contact) is hand-maintained separately from each member's `role` field in `members/*.json`.
+   Updating one without the other will make them drift out of sync.
