@@ -10,7 +10,7 @@
 This repository contains the website for the **Python Software Foundation's Diversity & Inclusion Workgroup**.
 
 The site is currently hosted on **GitHub Pages** at:
-`https://psf.github.io/diversity-and-inclusion-wg/`
+`https://diversity.python.org`
 
 
 1. **Work-in-progress migration**: A [Pelican](https://getpelican.com/) static site generator setup (`pelicanconf.py`, `publishconf.py`, `content/`, `theme/`) that is partially configured but not yet integrated into the deployment pipeline. The `output/` directory is empty and no build automation exists.
@@ -21,7 +21,7 @@ The site is currently hosted on **GitHub Pages** at:
 
 | Component | Technology | Version |
 |-----------|------------|---------|
-| Language | Python | >= 3.12 |
+| Language | Python | >= 3.14 |
 | Package Manager | `uv` | (lockfile: `uv.lock`) |
 | Static Site Generator | Pelican | >= 4.12.0 |
 | Markdown Parser | Python-Markdown | >= 3.10.2 |
@@ -30,6 +30,11 @@ The site is currently hosted on **GitHub Pages** at:
 | Frontend Components | Custom components | Tailwind utilities |
 | Frontend Fonts | Google Fonts (Inter) | — |
 | Frontend Icons | Font Awesome 6.4.0 | CDN |
+| Linter/Formatter | Ruff | (config in `pyproject.toml`) |
+| Local checks | `prek` | (config in `.pre-commit-config.yaml`) |
+| Dependency updates | Renovate | (config in `renovate.json5`) |
+| CI | GitHub Actions | `.github/workflows/ci.yml` |
+| Security scanning | CodeQL | `.github/workflows/codeql.yml` |
 
 ---
 
@@ -119,29 +124,37 @@ python -m http.server  # Serves from project root; index.html is the entry point
 
 No test runner configuration, no test files, and no testing dependencies exist.
 
-If you add tests, the project uses Python >= 3.12 and `uv`. A reasonable choice would be `pytest`.
+If you add tests, the project uses Python >= 3.14 and `uv`. A reasonable choice would be `pytest`.
 
 ---
 
+## Development Workflow
+
+- **Linting/formatting**: [Ruff](https://docs.astral.sh/ruff/), configured in `pyproject.toml`. Run via `make lint` / `make format`, or `uv run ruff check .` / `uv run ruff format .`.
+- **Pre-commit hooks**: `.pre-commit-config.yaml` runs Ruff, mdformat, actionlint, and basic hygiene hooks (trailing whitespace, YAML/TOML/JSON validity, `uv lock` sync), executed via [`prek`](https://github.com/j178/prek) (a Rust reimplementation of `pre-commit`, compatible with the same config). Install once with `uv tool install prek && prek install`; run on demand with `make precommit`.
+- **CI**: `.github/workflows/ci.yml` runs Ruff lint/format checks and a Pelican production build on every push and pull request.
+- **Security scanning**: `.github/workflows/codeql.yml` runs CodeQL (Python + GitHub Actions) on pushes, pull requests, and a weekly schedule.
+- **Dependency updates**: [Renovate](https://docs.renovatebot.com/) is configured in `renovate.json5` to open PRs for Python dependencies, GitHub Actions, and pre-commit hook revisions.
+
 ## Deployment
 
-- **Platform**: GitHub Pages
-- **Current mechanism**: The repository root `index.html` is served directly by GitHub Pages.
-- **No CI/CD**: There are no GitHub Actions workflows, no `Makefile`, and no automated build or deploy scripts.
-- **Pelican output is not deployed**: The `output/` directory is empty and not part of the current Pages deployment.
+- **Platform**: GitHub Pages, serving the `gh-pages` branch, behind the `diversity.python.org` custom domain.
+- **Mechanism**: `.github/workflows/deploy.yml` builds the Pelican site with `publishconf.py` and pushes `output/` to the `gh-pages` branch on every push to `main`.
 
-### To deploy Pelican-generated output (future state)
+### To deploy Pelican-generated output manually
 
 You would typically:
-1. Run `pelican content -s publishconf.py`
+1. Run `uv run pelican content -o output -s publishconf.py`
 2. Copy the contents of `output/` to the branch or directory configured for GitHub Pages.
 
 ---
 
 ## Security Considerations
 
-- The `.gitignore` file only ignores macOS system files (`.DS_Store`, etc.). It does **not** ignore Python cache (`__pycache__`, `*.pyc`), the `output/` directory, or `.venv/`.
+- The `.gitignore` file ignores macOS system files, the `output/` build directory, `.venv/`, Python caches, and Ruff/uv caches.
 - No secrets, API keys, or credentials are present in the repository.
+- GitHub Actions in `.github/workflows/` are pinned to full commit SHAs (with the version in a trailing comment); Renovate keeps them current.
+- The project is licensed under Apache-2.0 (`LICENSE`).
 - Several navigation and social links in the templates are set to `#` placeholders.
 - The standalone `index.html` and templates load external resources from CDNs (Font Awesome, Google Fonts). Ensure these are acceptable for the project's content security policy if one is introduced.
 
