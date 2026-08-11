@@ -1,0 +1,5 @@
+# mdformat config (see the mdformat hook in .pre-commit-config.yaml).
+# number: keep sequential 1. 2. 3. numbering instead of mdformat's all-"1." default.
+# wrap = 100: hard-wrap prose at 100 columns, matching ruff's line length for Python.
+number = true
+wrap = 100

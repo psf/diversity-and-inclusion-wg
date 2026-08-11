@@ -2,7 +2,8 @@
 
 🌐 Visit our [webpage](https://diversity.python.org) for vision, mission and updates.
 
-🤝 This website is managed by PSF's Diversity and Inclusion Workgroup. If you would like to join as an official member, read more [here](https://wiki.python.org/psf/DiversityandInclusionWG).
+🤝 This website is managed by PSF's Diversity and Inclusion Workgroup. If you would like to join as
+an official member, read more [here](https://wiki.python.org/psf/DiversityandInclusionWG).
 
 ⤴️ It is currently hosted on GitHub pages.
 
@@ -38,7 +39,10 @@ source .venv/bin/activate
 make build
 ```
 
-This compiles `theme/tailwind.input.css` to `theme/static/css/tailwind.css` (downloading the pinned Tailwind CLI into `.bin/` on first run) and generates the site into the `output/` directory. Running `pelican content` directly skips the CSS build, so pages will be unstyled unless `make css` has already been run.
+This compiles `theme/tailwind.input.css` to `theme/static/css/tailwind.css` (downloading the pinned
+Tailwind CLI into `.bin/` on first run) and generates the site into the `output/` directory. Running
+`pelican content` directly skips the CSS build, so pages will be unstyled unless `make css` has
+already been run.
 
 ### Preview locally
 
@@ -59,7 +63,9 @@ ______________________________________________________________________
 
 ## Contributing
 
-Install the dev tools and enable the git hooks (Ruff lint/format, mdformat, [cspell](https://cspell.org/) spell checking, actionlint, and basic file hygiene checks), run via [`prek`](https://github.com/j178/prek), a fast `pre-commit`-compatible hook runner:
+Install the dev tools and enable the git hooks (Ruff lint/format, mdformat,
+[cspell](https://cspell.org/) spell checking, actionlint, and basic file hygiene checks), run via
+[`prek`](https://github.com/j178/prek), a fast `pre-commit`-compatible hook runner:
 
 ```bash
 uv sync --group dev
@@ -75,17 +81,23 @@ make format     # ruff check --fix + ruff format
 make precommit  # run all pre-commit hooks against the whole repo
 ```
 
-Every push and pull request runs the same lint checks plus a production build in CI (`.github/workflows/ci.yml`).
+Every push and pull request runs the same lint checks plus a production build in CI
+(`.github/workflows/ci.yml`).
 
-If cspell flags a real name or project-specific term as unknown, add it to `.cspell/project-words.txt` (one word per line) rather than disabling the check.
+If cspell flags a real name or project-specific term as unknown, add it to
+`.cspell/project-words.txt` (one word per line) rather than disabling the check.
 
-When writing content for the site, default to American English spelling, but favor clarity over dialect: short sentences, no idioms or culturally specific references, acronyms spelled out on first use. Many readers are not native English speakers. See [`AGENTS.md`](AGENTS.md#writing-style) for details.
+When writing content for the site, default to American English spelling, but favor clarity over
+dialect: short sentences, no idioms or culturally specific references, acronyms spelled out on first
+use. Many readers are not native English speakers. See [`AGENTS.md`](AGENTS.md#writing-style) for
+details.
 
 ______________________________________________________________________
 
 ## Adding or Updating Members
 
-Member data lives in individual JSON files inside the `members/` directory. The site automatically reads all `.json` files from this folder.
+Member data lives in individual JSON files inside the `members/` directory. The site automatically
+reads all `.json` files from this folder.
 
 ### Create a new member
 
@@ -127,7 +139,8 @@ Create a new file at `members/{firstname-lastname}.json`:
 
 ### Moving a member to "Past Members"
 
-Set `"active": false` in their JSON file. The site automatically moves them to the Past Members section.
+Set `"active": false` in their JSON file. The site automatically moves them to the Past Members
+section.
 
 ### Adding social links
 
@@ -155,7 +168,8 @@ content/images/
 └── pages/         # Page-specific illustrations
 ```
 
-When adding a content image, place it in the appropriate subdirectory and reference it by its URL path (e.g., `/images/members/jane-doe.jpg`).
+When adding a content image, place it in the appropriate subdirectory and reference it by its URL
+path (e.g., `/images/members/jane-doe.jpg`).
 
 ______________________________________________________________________
 
@@ -258,10 +272,11 @@ ______________________________________________________________________
 The site is deployed to GitHub Pages. To deploy:
 
 1. Build: `pelican content -s publishconf.py`
-1. Push the `output/` contents to the GitHub Pages branch.
+2. Push the `output/` contents to the GitHub Pages branch.
 
 ______________________________________________________________________
 
 ## Questions?
 
-Ask for help in the Diversity and Inclusion workgroup - Python Software Foundation Slack (thepsf.slack.com) in the `#/diversity-and-inclusion` channel.
+Ask for help in the Diversity and Inclusion workgroup - Python Software Foundation Slack
+(thepsf.slack.com) in the `#/diversity-and-inclusion` channel.

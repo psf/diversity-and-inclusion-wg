@@ -29,7 +29,10 @@ repos:
       - id: mdformat
         additional_dependencies:
           - mdformat-gfm # GitHub Flavored Markdown support
-          - mdformat-frontmatter # Don't mess with Pelican's metadata header on content pages
+          # Preserves ---/+++-delimited frontmatter, including content/pages/*.md's Pelican
+          # metadata header: python-markdown's Meta extension accepts an optional leading `---`
+          # fence (and a closing `---`/`...`), so fencing it is safe and lets mdformat touch it.
+          - mdformat-frontmatter
 
   - repo: https://github.com/streetsidesoftware/cspell-cli
     rev: v10.0.1
