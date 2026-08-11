@@ -31,6 +31,7 @@ ______________________________________________________________________
 | Frontend Icons         | Font Awesome         | 6.7.2 (self-hosted, `theme/static/fontawesome/`) |
 | Linter/Formatter       | Ruff                 | (config in `pyproject.toml`)                     |
 | Local checks           | `prek`               | (config in `.pre-commit-config.yaml`)            |
+| Spell checking         | cspell               | en (American English, config in `.cspell.json`)  |
 | Dependency updates     | Renovate             | (config in `renovate.json5`)                     |
 | CI                     | GitHub Actions       | `.github/workflows/ci.yml`                       |
 | Security scanning      | CodeQL               | `.github/workflows/codeql.yml`                   |
@@ -131,7 +132,8 @@ ______________________________________________________________________
 
 - **CSS build**: `make css` downloads the pinned, checksum-verified [Tailwind standalone CLI](https://github.com/tailwindlabs/tailwindcss/releases) into `.bin/` (via `scripts/install-tailwindcss.sh`) and compiles `theme/tailwind.input.css` to `theme/static/css/tailwind.css`. `build`/`serve`/`publish` depend on it. Neither the CLI binary nor the compiled CSS is committed.
 - **Linting/formatting**: [Ruff](https://docs.astral.sh/ruff/), configured in `pyproject.toml`. Run via `make lint` / `make format`, or `uv run ruff check .` / `uv run ruff format .`.
-- **Pre-commit hooks**: `.pre-commit-config.yaml` runs Ruff, mdformat, actionlint, and basic hygiene hooks (trailing whitespace, YAML/TOML/JSON validity, `uv lock` sync), executed via [`prek`](https://github.com/j178/prek) (a Rust reimplementation of `pre-commit`, compatible with the same config). Install once with `uv tool install prek && prek install`; run on demand with `make precommit`.
+- **Pre-commit hooks**: `.pre-commit-config.yaml` runs Ruff, mdformat, [cspell](https://cspell.org/) (American English), actionlint, and basic hygiene hooks (trailing whitespace, YAML/TOML/JSON validity, `uv lock` sync), executed via [`prek`](https://github.com/j178/prek) (a Rust reimplementation of `pre-commit`, compatible with the same config). Install once with `uv tool install prek && prek install`; run on demand with `make precommit`.
+- **Spell checking**: cspell is configured in `.cspell.json` (`language: en`) with project-specific words (names, identifiers) in `.cspell/project-words.txt`. Runs on changed files and on the commit message.
 - **CI**: `.github/workflows/ci.yml` runs Ruff lint/format checks and a Pelican production build on every push and pull request.
 - **Security scanning**: `.github/workflows/codeql.yml` runs CodeQL (Python + GitHub Actions) on pushes, pull requests, and a weekly schedule.
 - **Dependency updates**: [Renovate](https://docs.renovatebot.com/) is configured in `renovate.json5` to open PRs for Python dependencies, GitHub Actions, and pre-commit hook revisions.
