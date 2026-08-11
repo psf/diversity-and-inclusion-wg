@@ -56,6 +56,9 @@ jobs:
       - name: Install dependencies
         run: uv sync --locked
 
+      - name: Build Tailwind CSS
+        run: ./scripts/install-tailwindcss.sh && .bin/tailwindcss -i theme/tailwind.input.css -o theme/static/css/tailwind.css --minify
+
       # Smoke-tests templates, pelicanconf.py, and every members/*.json file: a broken one fails
       # the build here instead of on the next push to main.
       - name: Build site (production config)
