@@ -1,0 +1,76 @@
+// Automated dependency updates for pyproject.toml/uv.lock, GitHub Actions, and
+// .pre-commit-config.yaml hook revs.
+//
+// Setup: install the Renovate GitHub App (https://github.com/apps/renovate) and merge the
+// one-time "Configure Renovate" onboarding PR.
+//
+// Validate after editing: `npx --yes --package renovate -- renovate-config-validator --strict`
+// (also wired as a pre-commit hook).
+{
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
+
+  // Best-practice defaults (SHA-pinned actions, Dependency Dashboard) plus the pre-commit
+  // manager (off by default) and lockfile maintenance for transitive uv.lock bumps.
+  extends: ["config:best-practices", ":enablePreCommit"],
+  lockFileMaintenance: { enabled: true },
+
+  timezone: "Europe/Berlin",
+  // Monday 02:00-06:59 window; only allows PRs to open, the hosted App picks the exact time.
+  schedule: ["* 2-6 * * 1"],
+
+  // Bump the pyproject.toml floor, not just uv.lock. Matches "exclude-newer" in pyproject.toml.
+  rangeStrategy: "bump",
+  minimumReleaseAge: "1 day",
+
+  // Security fixes skip the schedule and release-age hold.
+  osvVulnerabilityAlerts: true,
+  vulnerabilityAlerts: {
+    labels: ["dependencies", "security"],
+    minimumReleaseAge: "0 days",
+  },
+
+  labels: ["dependencies"],
+  semanticCommits: "enabled",
+  semanticCommitType: "build",
+  semanticCommitScope: "deps",
+
+  packageRules: [
+    // Don't auto-bump the minimum-supported-Python floor; flag it on the Dashboard instead.
+    {
+      matchManagers: ["pep621"],
+      matchDepTypes: ["requires-python"],
+      dependencyDashboardApproval: true,
+    },
+
+    // Group minor/patch by ecosystem; majors land alone for review.
+    {
+      matchManagers: ["github-actions"],
+      matchUpdateTypes: ["minor", "patch"],
+      groupName: "github-actions (minor+patch)",
+    },
+    {
+      matchManagers: ["pep621"],
+      matchDepTypes: ["project.dependencies"],
+      matchUpdateTypes: ["minor", "patch"],
+      groupName: "python production (minor+patch)",
+    },
+    {
+      matchManagers: ["pep621"],
+      matchDepTypes: ["dependency-groups"],
+      matchUpdateTypes: ["minor", "patch"],
+      groupName: "python development (minor+patch)",
+    },
+
+    // Batch remaining pre-commit hook bumps; the ruff-specific rule below overrides this.
+    {
+      matchManagers: ["pre-commit"],
+      groupName: "pre-commit hooks",
+    },
+
+    // Keep the ruff pyproject dependency and its pre-commit hook on the same version.
+    {
+      matchPackageNames: ["ruff", "astral-sh/ruff-pre-commit"],
+      groupName: "ruff",
+    },
+  ],
+}
