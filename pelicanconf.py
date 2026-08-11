@@ -1,5 +1,5 @@
-from datetime import datetime
 import json
+from datetime import datetime
 from pathlib import Path
 
 AUTHOR = "Python D&I Workgroup"
@@ -170,8 +170,7 @@ MEMBERS_DIR = Path(__file__).parent / "members"
 MEMBERS = []
 if MEMBERS_DIR.exists():
     for f in sorted(MEMBERS_DIR.glob("*.json")):
-        with open(f, "r", encoding="utf-8") as fh:
-            MEMBERS.append(json.load(fh))
+        MEMBERS.append(json.loads(f.read_text(encoding="utf-8")))
 
 # Derive leadership from member roles
 LEADERSHIP_MEMBERS = [m for m in MEMBERS if m.get("role")]
