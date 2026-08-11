@@ -43,3 +43,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: output/
           publish_branch: gh-pages
+          # The action replaces the whole branch with publish_dir on every deploy. Without this,
+          # the custom domain's CNAME file (not part of the Pelican build) would be deleted on the
+          # next push to main.
+          cname: diversity.python.org
