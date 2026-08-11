@@ -1,6 +1,6 @@
 # Diversity and Inclusion Working Group
 
-🌐 Visit our [webpage](https://psf.github.io/diversity-and-inclusion-wg/) for vision, mission and updates.
+🌐 Visit our [webpage](https://diversity.python.org) for vision, mission and updates.
 
 🤝 This website is managed by PSF's Diversity and Inclusion Workgroup. If you would like to join as an official member, read more [here](https://wiki.python.org/psf/DiversityandInclusionWG).
 
@@ -19,6 +19,7 @@
 | Templating | Jinja2 |
 | CSS Framework | Tailwind CSS (CDN) |
 | Icons | Font Awesome 6.4.0 |
+| Linting/Formatting | [Ruff](https://docs.astral.sh/ruff/) |
 
 ---
 
@@ -52,6 +53,28 @@ Then open http://localhost:8000.
 ```bash
 pelican --autoreload --listen content
 ```
+
+---
+
+## Contributing
+
+Install the dev tools and enable the git hooks (Ruff lint/format, mdformat, actionlint, and basic file hygiene checks), run via [`prek`](https://github.com/j178/prek), a fast `pre-commit`-compatible hook runner:
+
+```bash
+uv sync --group dev
+uv tool install prek
+prek install
+```
+
+Run checks manually with:
+
+```bash
+make lint       # ruff check + ruff format --check
+make format     # ruff check --fix + ruff format
+make precommit  # run all pre-commit hooks against the whole repo
+```
+
+Every push and pull request runs the same lint checks plus a production build in CI (`.github/workflows/ci.yml`).
 
 ---
 
