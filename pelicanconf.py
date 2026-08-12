@@ -148,6 +148,8 @@ IMPACT_ITEMS = [
     },
 ]
 
+# TODO: no template renders GET_INVOLVED yet. Add a "Get Involved" section (or page) that
+# uses it, or drop the data if the content is no longer wanted.
 GET_INVOLVED = {
     "start_small": [
         "Follow our updates on the PSF blog",
@@ -175,21 +177,18 @@ if MEMBERS_DIR.exists():
 # Derive leadership from member roles
 LEADERSHIP_MEMBERS = [m for m in MEMBERS if m.get("role")]
 
-# Group active members by region
+# Group active members by region. Sorted by region name so the order of the sections on the
+# members page is stable; otherwise it follows whichever member file sorts first, and adding
+# one member can reshuffle the whole page.
 MEMBERS_BY_REGION = {}
 for m in MEMBERS:
     if m.get("active"):
         region = m.get("region")
         if region:
             MEMBERS_BY_REGION.setdefault(region, []).append(m)
+MEMBERS_BY_REGION = dict(sorted(MEMBERS_BY_REGION.items()))
 
 PAST_MEMBERS = [m for m in MEMBERS if not m.get("active")]
-
-LEADERSHIP = {
-    "chair": "Georgi Ker",
-    "co_chair": "Nathan Bransby",
-    "staff_contact": "Marie Nordin",
-}
 
 CONNECT = [
     {
