@@ -130,10 +130,10 @@ Create a new file at `members/{firstname-lastname}.json`:
 | ------------- | ---------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
 | `name`        | Full name                                            | `"Ada Lovelace"`                                                                                     |
 | `slug`        | URL-friendly identifier                              | `"ada-lovelace"`                                                                                     |
-| `role`        | Leadership role (leave empty for regular members)    | `"Chair"`, `"Co-Chair"`, `"PSF Staff Contact"`                                                       |
+| `role`        | Leadership role (leave empty for regular members)    | `"Chair"`, `"Vice Chair"`, `"PSF Staff Contact"`                                                     |
 | `region`      | Geographic region                                    | `"Asia"`, `"Europe"`, `"Africa"`, `"North America"`, `"South America"`, `"Oceania"`, `"Middle East"` |
 | `active`      | `true` for current members, `false` for past members | `true`                                                                                               |
-| `image`       | URL to member photo (see below)                      | `"https://..."`                                                                                      |
+| `image`       | Path to member photo (see below)                     | `"/images/members/ada-lovelace.jpg"`                                                                 |
 | `affiliation` | Company, organization, or university                 | `"PSF"`                                                                                              |
 | `socials`     | Object with social media URLs                        | See example above                                                                                    |
 | `bio`         | Optional short biography                             | `"Pythonista since 2010..."`                                                                         |
@@ -176,43 +176,14 @@ ______________________________________________________________________
 
 ## Member Images
 
-There are four ways to provide a member photo:
+Member photos are served from this repository. Do not point `image` at an external URL such as a
+GitHub avatar or a Gravatar. Those make every visitor's browser send a request to a third party, and
+the image breaks if the remote account changes or is deleted.
 
-### Option 1: Direct image URL
+### Option 1: Local image (recommended)
 
-Upload the image somewhere (e.g., GitHub user content, Imgur, your own server) and paste the URL:
-
-```json
-{
-  "image": "https://avatars.githubusercontent.com/u/1234567?v=4"
-}
-```
-
-### Option 2: Gravatar
-
-If the member has a Gravatar account, use their email hash:
-
-```json
-{
-  "image": "https://www.gravatar.com/avatar/YOUR_MD5_HASH?s=400&d=identicon"
-}
-```
-
-To use Gravatar, generate the MD5 hash of the email:
-
-```bash
-echo -n "user@example.com" | md5sum
-```
-
-Then construct the URL yourself:
-
-```
-https://www.gravatar.com/avatar/YOUR_MD5_HASH?s=400&d=identicon
-```
-
-### Option 3: Local image (recommended)
-
-Save the image to `content/images/members/` and reference it by URL path:
+Save the image to `content/images/members/`, named after the member's slug, and reference it by URL
+path:
 
 ```json
 {
@@ -220,7 +191,10 @@ Save the image to `content/images/members/` and reference it by URL path:
 }
 ```
 
-### Option 4: Placeholder (default)
+If you have an image hosted elsewhere (a GitHub avatar, a Gravatar), download it, commit it to
+`content/images/members/`, and reference the local path.
+
+### Option 2: Placeholder (default)
 
 Leave `"image": ""` empty. The site falls back to `Portrait_Placeholder.png`.
 
