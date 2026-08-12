@@ -253,5 +253,9 @@ ______________________________________________________________________
 
 ## Questions?
 
-Ask for help in the Diversity and Inclusion workgroup - Python Software Foundation Slack
-(thepsf.slack.com) in the `#/diversity-and-inclusion` channel.
+Workgroup members can ask for help in the private `#diversity-and-inclusion` channel on the
+[PSF Slack](https://thepsf.slack.com).
+
+Everyone else can [open an issue](https://github.com/psf/diversity-and-inclusion-wg/issues), start a
+[discussion](https://github.com/psf/diversity-and-inclusion-wg/discussions), or email
+[diversity-inclusion-wg@python.org](mailto:diversity-inclusion-wg@python.org).
