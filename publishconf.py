@@ -5,7 +5,11 @@ import os
 import sys
 
 sys.path.append(os.curdir)
-from pelicanconf import *
+import pelicanconf as _pelicanconf
+
+for _name in dir(_pelicanconf):
+    if not _name.startswith("_"):
+        globals()[_name] = getattr(_pelicanconf, _name)
 
 # If your site is available via HTTPS, make sure SITEURL begins with https://
 SITEURL = "https://diversity.python.org"
