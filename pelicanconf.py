@@ -222,3 +222,9 @@ FOOTER_CTA = {
 
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True
+
+# Pelican only reads uppercase names from a settings module, so those are the only
+# names publishconf.py needs from here. Declaring __all__ keeps its
+# `from pelicanconf import *` from also copying the imports and loop variables above,
+# and resolves the py/polluting-import code scanning alert at its cause.
+__all__ = sorted(name for name in globals() if name.isupper())
