@@ -85,6 +85,7 @@ pyupgrade
 reimplementation
 reuven
 Reuven
+sarif
 sayantika
 Sayantika
 seyram
@@ -105,3 +106,5 @@ timemachine
 ugwu
 Ugwu
 venv
+zizmor
+zizmorcore

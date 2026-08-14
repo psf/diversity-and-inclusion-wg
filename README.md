@@ -64,8 +64,9 @@ ______________________________________________________________________
 ## Contributing
 
 Install the dev tools and enable the git hooks (Ruff lint/format, mdformat,
-[cspell](https://cspell.org/) spell checking, actionlint, and basic file hygiene checks), run via
-[`prek`](https://github.com/j178/prek), a fast `pre-commit`-compatible hook runner:
+[cspell](https://cspell.org/) spell checking, actionlint, [zizmor](https://docs.zizmor.sh), and
+basic file hygiene checks), run via [`prek`](https://github.com/j178/prek), a fast
+`pre-commit`-compatible hook runner:
 
 ```bash
 uv sync --group dev

@@ -55,6 +55,14 @@ repos:
     hooks:
       - id: actionlint
 
+  # The security half of the workflow linting: actionlint reads the YAML for correctness, zizmor
+  # reads it for credential persistence, cache poisoning, template injection, and over-broad
+  # permissions. Same tool as the zizmor.yml workflow.
+  - repo: https://github.com/zizmorcore/zizmor-pre-commit
+    rev: v1.29.0
+    hooks:
+      - id: zizmor
+
   # actionlint only shellchecks `run:` steps inside workflow YAML; standalone scripts (e.g.
   # scripts/install-tailwindcss.sh) need their own check.
   - repo: https://github.com/shellcheck-py/shellcheck-py

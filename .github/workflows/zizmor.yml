@@ -1,0 +1,66 @@
+# Static analysis for the GitHub Actions workflows themselves (https://docs.zizmor.sh).
+# actionlint (a pre-commit hook) reads the same files for correctness; zizmor reads them for
+# security: credential persistence, cache poisoning, template injection, over-broad permissions.
+#
+# ci.yml already runs the zizmor hook as part of `prek run --all-files`. This workflow adds the
+# two things a hook run cannot do: it sends findings to the repository's Security tab, and it
+# passes a GH_TOKEN, which switches on the audits that query the GitHub API.
+name: zizmor
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+  workflow_dispatch:
+
+# Cancel superseded PR scans, but never cancel the main baseline
+# (killing it would leave the Security tab's results stale).
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.event_name }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+# Nothing by default; the job asks for exactly what it needs.
+permissions: {}
+
+jobs:
+  zizmor:
+    name: Audit workflows
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read # actions/checkout
+      security-events: write # upload-sarif
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@ae62891fec2bb8e7d6c99fc78c9fec3a63790f8d # v10.0.0
+
+      # --only-group dev: zizmor needs neither Pelican nor the theme build.
+      # GH_TOKEN switches on the audits that query the GitHub API (known-vulnerable-actions,
+      # stale-action-refs). Without it those quietly do not run.
+      - name: Run zizmor
+        run: uv run --only-group dev --locked zizmor --format=sarif . > results.sarif
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload SARIF to code scanning
+        # A fork PR gets a read-only token, so the upload would fail there; the gate below still
+        # runs. The expression is also true for push and workflow_dispatch, where the field is null.
+        if: ${{ !github.event.pull_request.head.repo.fork }}
+        uses: github/codeql-action/upload-sarif@ff2f1c621b7f889edc0d3c761ac2e6a3f8cdb0dd # v4.37.7
+        with:
+          sarif_file: results.sarif
+          category: zizmor
+
+      - name: Fail on findings
+        # --format=sarif always exits 0, so the audit runs a second time (sub-second) to gate the
+        # PR, after the results are safely in the Security tab. Unlike the hook run in ci.yml,
+        # this one is online, so a newly disclosed vulnerable action fails here too.
+        run: uv run --only-group dev --locked zizmor .
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
