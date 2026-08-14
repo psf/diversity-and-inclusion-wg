@@ -19,6 +19,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # The gh-pages push below does not use these credentials: actions-gh-pages builds its
+          # own authenticated remote from the github_token input. Nothing else here needs git
+          # write access, so the token has no reason to sit in .git/config for the whole job.
+          persist-credentials: false
 
       - name: Install uv
         uses: astral-sh/setup-uv@ae62891fec2bb8e7d6c99fc78c9fec3a63790f8d # v10.0.0
