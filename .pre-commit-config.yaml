@@ -12,12 +12,12 @@ repos:
       - id: trailing-whitespace
 
   - repo: https://github.com/astral-sh/uv-pre-commit
-    rev: 0.12.3
+    rev: 0.12.5
     hooks:
       - id: uv-lock
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.16.2
+    rev: v0.16.3
     hooks:
       - id: ruff-check
         args: [--fix]
@@ -64,7 +64,7 @@ repos:
 
   # Renovate config validator. Catches a typo in renovate.json5 before it silently breaks updates.
   - repo: https://github.com/renovatebot/pre-commit-hooks
-    rev: 44.24.0
+    rev: 44.30.1
     hooks:
       - id: renovate-config-validator
         args: [--strict]
