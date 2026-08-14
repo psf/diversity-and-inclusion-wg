@@ -38,6 +38,7 @@ ______________________________________________________________________
 | Dependency updates     | Renovate             | (config in `renovate.json5`)                     |
 | CI                     | GitHub Actions       | `.github/workflows/ci.yml`                       |
 | Security scanning      | CodeQL               | `.github/workflows/codeql.yml`                   |
+| Workflow auditing      | zizmor               | `.github/workflows/zizmor.yml`                   |
 
 ______________________________________________________________________
 
@@ -168,6 +169,13 @@ ______________________________________________________________________
   production build, on every push and pull request.
 - **Security scanning**: `.github/workflows/codeql.yml` runs CodeQL (Python + GitHub Actions) on
   pushes, pull requests, and a weekly schedule.
+- **Workflow auditing**: [zizmor](https://docs.zizmor.sh) reads the workflow files for security
+  problems actionlint does not look for (credentials left behind by a checkout, cache poisoning,
+  template injection, over-broad permissions). It runs as a pre-commit hook, so `make precommit` and
+  the CI hook run both cover it, and `.github/workflows/zizmor.yml` runs it again with a `GH_TOKEN`
+  (for the audits that query the GitHub API) and uploads the findings to the Security tab. Run it
+  alone with `uv run zizmor .`. Keep new workflow steps clean: actions pinned to a full commit SHA,
+  `persist-credentials: false` on every checkout, narrow `permissions` per job.
 - **Dependency updates**: [Renovate](https://docs.renovatebot.com/) is configured in
   `renovate.json5` to open PRs for Python dependencies, GitHub Actions, and pre-commit hook
   revisions.

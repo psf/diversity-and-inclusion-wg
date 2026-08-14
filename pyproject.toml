@@ -18,6 +18,7 @@ Repository = "https://github.com/psf/diversity-and-inclusion-wg"
 [dependency-groups]
 dev = [
     "ruff>=0.16.3",
+    "zizmor>=1.29.0",
 ]
 
 [tool.uv]
